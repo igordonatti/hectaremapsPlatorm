@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import Button from "../../components/Button/Button"
 import Input from "../../components/Input/Input"
 
@@ -17,7 +18,9 @@ const SignUp = () => {
       </div>
       <div className="w-[65%] h-screen bg-green-800 flex flex-col justify-center items-center">
         <span className="text-white font-semibold text-5xl mb-10">Já possui uma conta?</span>
-        <Button onClick={() => console.log('ALTERAR ROTA PARA ENTRAR')} placeholder="Entrar" backgroundColor="bg-white" textColor="text-black" hover={false}/>
+        <Link to="/SignIn">
+          <Button onClick={() => console.log('ALTERAR ROTA PARA ENTRAR')} placeholder="Entrar" backgroundColor="bg-white" textColor="text-black" hover={false}/>
+        </Link>
       </div>
     </div>
   )
