@@ -4,6 +4,8 @@ import SignIn from "./pages/SignIn/SignIn"
 import Recovery from "./pages/Recovery/Recovery"
 import RecoveryCode from "./pages/Recovery Code/RecoveryCode"
 import RecoveryPassword from "./pages/Recovery Password/RecoveryPassword"
+import FirstPage from "./pages/First Page/FirstPage"
+import Services from "./pages/Services Page/Services"
 
 function App() {
 
@@ -16,6 +18,8 @@ function App() {
       <Route path="/Recovery" element={ <Recovery /> } />
       <Route path="/RecoveryCode" element={ <RecoveryCode /> } />
       <Route path="/RecoveryPassword" element={ <RecoveryPassword /> } />
+      <Route path="/Home" element={ <FirstPage /> } />
+      <Route path="/Services" element={ <Services /> } />
     </Routes>
    </div>
   )
