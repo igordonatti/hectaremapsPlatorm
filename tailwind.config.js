@@ -9,7 +9,8 @@ module.exports = {
           800: '#023F3A',
         },
         'gray': {
-          300: '#D9D9D9'
+          300: '#D9D9D9',
+          500: '#959595',
         }
       },
       fontFamily: {
