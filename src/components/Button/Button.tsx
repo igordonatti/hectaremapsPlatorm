@@ -7,7 +7,7 @@ interface ButtonPropos {
   width?: string;
   textColor?: string;
   hover?: boolean;
-  onClick: () => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void; 
 }
 
 const Button: React.FC<ButtonPropos> = ({placeholder, height, width, backgroundColor, textColor, hover, onClick}) => {
