@@ -6,6 +6,7 @@ import RecoveryCode from "./pages/RecoveryCode/RecoveryCode"
 import RecoveryPassword from "./pages/Recovery Password/RecoveryPassword"
 import FirstPage from "./pages/FirstPage/FirstPage"
 import Services from "./pages/ServicesPage/Services"
+import { RequireAuth } from "./contexts/Auth/RequireAuth"
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
       <Route path="/Recovery" element={ <Recovery /> } />
       <Route path="/RecoveryCode" element={ <RecoveryCode /> } />
       <Route path="/RecoveryPassword" element={ <RecoveryPassword /> } />
-      <Route path="/Home" element={ <FirstPage /> } />
+      <Route path="/Home" element={ <RequireAuth><FirstPage /></RequireAuth> } />
       <Route path="/Services" element={ <Services /> } />
     </Routes>
    </div>

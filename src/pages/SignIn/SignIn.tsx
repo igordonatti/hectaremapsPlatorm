@@ -1,15 +1,25 @@
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 const SignIn = () => {
+  const auth = useContext(AuthContext);
+  const navigate = useNavigate();
   const [user, setUser] = useState('');
   const [pwd, setPwd] = useState('');
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log(user, pwd);
+    if(user && pwd) {
+      const isLogged = await auth.signIn(user, pwd);
+      if(isLogged){
+        navigate('/Home');
+      } else {
+        alert("Falha ao realizar login.");
+      }
+    }
   }
 
   const handleUserChange = (e: React.ChangeEvent<HTMLInputElement>) => {
