@@ -2,10 +2,10 @@ import { Route, Routes } from "react-router-dom"
 import SignUp from "./pages/SignUp/SignUp"
 import SignIn from "./pages/SignIn/SignIn"
 import Recovery from "./pages/Recovery/Recovery"
-import RecoveryCode from "./pages/Recovery Code/RecoveryCode"
+import RecoveryCode from "./pages/RecoveryCode/RecoveryCode"
 import RecoveryPassword from "./pages/Recovery Password/RecoveryPassword"
-import FirstPage from "./pages/First Page/FirstPage"
-import Services from "./pages/Services Page/Services"
+import FirstPage from "./pages/FirstPage/FirstPage"
+import Services from "./pages/ServicesPage/Services"
 
 function App() {
 

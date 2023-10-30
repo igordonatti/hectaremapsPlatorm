@@ -6,9 +6,10 @@ interface InputProps {
   height?: string;
   width?: string;
   type: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input: React.FC<InputProps> = ({height, width, type, placeholder}) => {
+const Input: React.FC<InputProps> = ({height, width, type, placeholder, onChange}) => {
   const InputClasses = `
     custom-input
     ${height ? `h-[${height}px]` : 'h-[68px]'} 
@@ -27,7 +28,7 @@ const Input: React.FC<InputProps> = ({height, width, type, placeholder}) => {
       <div className="absolute inset-y-0 left-0 flex">
         <div className="w-2 h-full bg-green-800"></div>
       </div>
-      <input placeholder={placeholder} className={InputClasses} type={type}/>
+      <input placeholder={placeholder} className={InputClasses} type={type} onChange={onChange}/>
     </div>
   )
 }
