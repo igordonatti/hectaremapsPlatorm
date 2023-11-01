@@ -26,7 +26,7 @@ const itemsMenu = [
 
 const Menu = () => {
   return (
-    <div className="self-center bg-white h-screen w-[320px] flex flex-col items-center">
+    <div className="mt-16 self-center bg-white h-screen w-[320px] flex flex-col items-center">
       {
         itemsMenu.map((icon, index) => (
           <div key={index} className='flex w-full items-center content-center p-2 ml-1'>
