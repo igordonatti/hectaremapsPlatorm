@@ -14,7 +14,7 @@ const Navigator = () => {
       <ul className="mt-4 flex w-full space-x-6">
         {
           navigatorFilters.map((item, index) => {
-            return <li onClick={() => handleItemClick(item)} className={`${selectedItem === item ? 'text-green-800 font-semibold border-b-2 border-green-800' : 'text-gray-500'} transition-colors`} key={index}>{item}</li>
+            return <li onClick={() => handleItemClick(item)} className={`${selectedItem === item ? 'text-green-800 font-semibold border-b-2 border-green-800' : 'text-gray-500'} transition-colors cursor-pointer`} key={index}>{item}</li>
           })
         }
       </ul>

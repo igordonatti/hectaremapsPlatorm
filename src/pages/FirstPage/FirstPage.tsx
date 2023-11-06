@@ -3,9 +3,9 @@ import Menu from "../../components/Menu/Menu"
 
 const FirstPage = () => {
   return (
-    <div className="h-screen">
+    <div className="">
       <Header />
-      <Menu />
+      <Menu />  
     </div>
   )
 }
