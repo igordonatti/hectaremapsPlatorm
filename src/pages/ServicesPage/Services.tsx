@@ -56,7 +56,7 @@ const Services = () => {
             <span className="m-2 w-28">Nome</span>
             <span className="m-2 w-20">Created</span>
             <span className="m-2 w-20">Status</span>
-            <span className="m-2 w-20">Serviço</span>
+            <span className="m-6 w-20">Serviço</span>
           </div>
           {
             services.map((item, index) => {
