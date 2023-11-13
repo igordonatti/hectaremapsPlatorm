@@ -4,3 +4,5 @@ export type User = {
   email: string;
   password?: string;
 }
+
+// Aqui irão as informações que irão ser retornadas do usuário.

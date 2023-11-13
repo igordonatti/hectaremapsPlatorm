@@ -9,9 +9,9 @@ export const AuthProvider = ({ children }: { children: JSX.Element}) => {
 
   const signIn = async (email: string, pwd: string) => {
     const data = await api.signIn(email, pwd);
-    console.log(data);
     if(data.name && data.access_token) {
       setUser(data);
+      setToken(data.access_token);
       return true;
     }
     return false;
@@ -20,6 +20,10 @@ export const AuthProvider = ({ children }: { children: JSX.Element}) => {
   const signOut = async () => {
     await api.logout();
     setUser(null);
+  }
+
+  const setToken = (token: string) => {
+    localStorage.setItem('authToken', token);
   }
 
   return (
