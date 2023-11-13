@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface InputProps {
   backgroundColor?: string;
@@ -6,10 +6,11 @@ interface InputProps {
   height?: string;
   width?: string;
   type: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  options?: string[]; // Adicione um array de opções
+  onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
 
-const Input: React.FC<InputProps> = ({height, width, type, placeholder, onChange}) => {
+const Input: React.FC<InputProps> = ({ height, width, type, placeholder, options, onChange }) => {
   const InputClasses = `
     custom-input
     ${height ? `h-[${height}px]` : 'h-[68px]'} 
@@ -22,15 +23,50 @@ const Input: React.FC<InputProps> = ({height, width, type, placeholder, onChange
     placeholder:text-black
     placeholder:font-semibold
   `
-  
-  return (
-    <div className='relative flex items-center'>
-      <div className="absolute inset-y-0 left-0 flex">
-        <div className="w-2 h-full bg-green-800"></div>
+
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValues = Array.from(selectedOptions);
+    selectedValues.push(event.target.value);
+    setSelectedOptions(selectedValues);
+    console.log(selectedOptions);
+  };
+
+  if (type === 'select' && options) {
+    return (
+      <div className='relative flex items-center'>
+        <div className="absolute inset-y-0 left-0 flex">
+          <div className="w-2 h-full bg-green-800"></div>
+        </div>
+        <select
+          className={InputClasses}
+          onChange={handleSelectChange}
+          multiple // Adicione a propriedade multiple para permitir seleção múltipla
+        >
+          {options.map((opt, index) => (
+            <option key={index} value={opt} className={`${selectedOptions.includes(opt) ? "bg-green-600" : ""}`}>
+              {opt}
+            </option>
+          ))}
+        </select>
       </div>
-      <input placeholder={placeholder} className={InputClasses} type={type} onChange={onChange}/>
-    </div>
-  )
+    );
+  } else {
+    return (
+      <div className='relative flex items-center'>
+        <div className="absolute inset-y-0 left-0 flex">
+          <div className="w-2 h-full bg-green-800"></div>
+        </div>
+        <input
+          placeholder={placeholder}
+          className={InputClasses}
+          type={type}
+          onChange={onChange}
+        />
+      </div>
+    );
+  }
 }
 
 export default Input
