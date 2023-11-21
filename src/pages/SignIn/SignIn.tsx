@@ -22,12 +22,12 @@ const SignIn = () => {
     }
   }
 
-  const handleUserChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUser(e.target.value);
+  const handleUserChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUser(event.target.value);
   }
 
-  const handlePwdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPwd(e.target.value);
+  const handlePwdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPwd(event.target.value);
   }
 
   return (

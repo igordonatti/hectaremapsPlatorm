@@ -13,21 +13,27 @@ interface HasFileProps {
   removeFile: () => void;
 }
 
-export const FileInput = () => {
+interface FileInputProps {
+  onFileChange: (file: File | null) => void;
+}
+
+export const FileInput = ({ onFileChange }: FileInputProps) => {
   const [file, setFile] = useState<File | null>(null);
 
   const removeFile = useCallback(() => {
     setFile(null);
-  }, [file]);
+    onFileChange(null);
+  }, [file, onFileChange]);
 
   const onDrop = useCallback((files: File[]) => {
     setFile(files[0]);
-  }, []);
+    onFileChange(files[0]);
+  }, [onFileChange]);
 
   const dropzone = useDropzone({
     onDrop,
     accept: {
-      'application/pdf': ['.pdf'],
+      'application/rar': ['.rar'],
     },
   });
 

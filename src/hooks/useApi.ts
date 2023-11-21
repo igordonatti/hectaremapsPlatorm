@@ -16,5 +16,23 @@ export const useApi = () => ({
   logout: async () => {
     const response = await api.post('/logout');
     return response.data;
-  }  
+  },
+  postImage: async (file: File) => {
+    const formData = new FormData();
+  formData.append('image', file);
+
+    try {
+      const response = await api.post('/images/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      console.log(response);
+      return response.data;
+    } catch (error) {
+      console.error('Erro ao enviar o arquivo:', error);
+      throw error; // Propaga o erro para que quem chama este método possa tratá-lo
+    }
+  }
 });
