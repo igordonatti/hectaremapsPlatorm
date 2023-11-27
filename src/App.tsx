@@ -22,9 +22,9 @@ function App() {
       <Route path="/RecoveryCode" element={ <RecoveryCode /> } />
       <Route path="/RecoveryPassword" element={ <RecoveryPassword /> } />
       <Route path="/Home" element={ <FirstPage /> } />
-      <Route path="/Services" element={ <Services /> } />
-      <Route path="/Projetos" element={ <Projects /> } />
-      <Route path="/NewService" element={ <NewService /> } />
+      <Route path="/Services" element={ <RequireAuth><Services /></RequireAuth> } />
+      <Route path="/Projetos" element={ <RequireAuth><Projects /></RequireAuth> } />
+      <Route path="/NewService" element={ <RequireAuth><NewService /></RequireAuth> } />
     </Routes>
    </div>
   )

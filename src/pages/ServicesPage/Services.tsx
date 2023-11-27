@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import Header from "../../components/Header/Header"
 import Menu from "../../components/Menu/Menu"
 import Navigator from "../../components/Navigator/Navigator"
@@ -51,7 +52,9 @@ const Services = () => {
         <div className="h-[95%] mt-2 ml-8 w-full mr-6">
         <div className="w-full flex justify-between">
           <span className="text-4xl text-green-800 font-poppins font-semibold">Serviços</span>
-          <span className="flex items-center justify-center text-4xl bg-green-800 text-white rounded-full ml-auto cursor-pointer">+</span>
+          <Link to={'/newService'} >
+            <span className="flex items-center justify-center text-4xl bg-green-800 text-white rounded-full ml-auto cursor-pointer">+</span>
+          </Link>
         </div>
           <Navigator />
           <div className="text-gray-500 h-12 mt-1 bg-white w-full border-gray-500 self-center flex text-center items-center p-3 flex-direction-column justify-content-start">

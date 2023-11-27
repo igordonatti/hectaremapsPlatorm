@@ -19,7 +19,7 @@ export const useApi = () => ({
   },
   postImage: async (file: File) => {
     const formData = new FormData();
-  formData.append('image', file);
+    formData.append('image', file);
 
     try {
       const response = await api.post('/images/upload', formData, {
@@ -34,5 +34,5 @@ export const useApi = () => ({
       console.error('Erro ao enviar o arquivo:', error);
       throw error; // Propaga o erro para que quem chama este método possa tratá-lo
     }
-  }
+  },
 });
