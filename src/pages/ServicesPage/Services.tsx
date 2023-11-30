@@ -53,7 +53,9 @@ const Services = () => {
         <div className="w-full flex justify-between">
           <span className="text-4xl text-green-800 font-poppins font-semibold">Serviços</span>
           <Link to={'/newService'} >
-            <span className="flex items-center justify-center text-4xl bg-green-800 text-white rounded-full ml-auto cursor-pointer">+</span>
+            <div className="flex items-center justify-center text-4xl bg-green-800 text-white rounded-full ml-auto cursor-pointer h-8 w-8">
+              <span className="mb-2">+</span>
+            </div>
           </Link>
         </div>
           <Navigator />

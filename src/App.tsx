@@ -21,7 +21,7 @@ function App() {
       <Route path="/Recovery" element={ <Recovery /> } />
       <Route path="/RecoveryCode" element={ <RecoveryCode /> } />
       <Route path="/RecoveryPassword" element={ <RecoveryPassword /> } />
-      <Route path="/Home" element={ <FirstPage /> } />
+      <Route path="/Home" element={ <RequireAuth><FirstPage /></RequireAuth> } />
       <Route path="/Services" element={ <RequireAuth><Services /></RequireAuth> } />
       <Route path="/Projetos" element={ <RequireAuth><Projects /></RequireAuth> } />
       <Route path="/NewService" element={ <RequireAuth><NewService /></RequireAuth> } />
