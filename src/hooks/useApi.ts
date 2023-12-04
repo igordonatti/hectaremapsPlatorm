@@ -28,7 +28,6 @@ export const useApi = () => ({
         },
       });
 
-      console.log(response);
       return response.data;
     } catch (error) {
       console.error('Erro ao enviar o arquivo:', error);
