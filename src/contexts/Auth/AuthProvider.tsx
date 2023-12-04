@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element}) => {
   const api = useApi();
 
   useEffect(() => {
+    console.log('UseEffect triggered');
     const validateToken = async () => {
       const storageData = localStorage.getItem('token');
       if(storageData) {
@@ -19,10 +20,11 @@ export const AuthProvider = ({ children }: { children: JSX.Element}) => {
       }
     }
     validateToken();
-  }, [api])
+  }, [])
 
   const signIn = async (email: string, pwd: string) => {
     const data = await api.signIn(email, pwd);
+    console.log(data);
     if(data.name && data.access_token) {
       setUser(data);
       setToken(data.access_token);
