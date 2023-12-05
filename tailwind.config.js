@@ -12,6 +12,9 @@ module.exports = {
         'gray': {
           300: '#D9D9D9',
           500: '#959595',
+        },
+        'red': {
+          300: '#E57373',
         }
       },
       fontFamily: {

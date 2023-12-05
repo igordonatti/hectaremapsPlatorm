@@ -9,11 +9,11 @@ export const AuthProvider = ({ children }: { children: JSX.Element}) => {
   const api = useApi();
 
   useEffect(() => {
-    console.log('UseEffect triggered');
     const validateToken = async () => {
       const storageData = localStorage.getItem('token');
       if(storageData) {
         const data = await api.validateToken(storageData);
+
         if(data) {
           setUser(data);
         }
@@ -24,13 +24,14 @@ export const AuthProvider = ({ children }: { children: JSX.Element}) => {
 
   const signIn = async (email: string, pwd: string) => {
     const data = await api.signIn(email, pwd);
-    console.log(data);
-    if(data.name && data.access_token) {
-      setUser(data);
-      setToken(data.access_token);
-      localStorage.setItem('token', data.access_token);
-      localStorage.setItem('user', JSON.stringify(data)); 
-      return true;
+    if(data) {
+      if(data.name && data.access_token) {
+        setUser(data);
+        setToken(data.access_token);
+        localStorage.setItem('token', data.access_token);
+        localStorage.setItem('user', JSON.stringify(data)); 
+        return true;
+      }
     }
     return false;
   }

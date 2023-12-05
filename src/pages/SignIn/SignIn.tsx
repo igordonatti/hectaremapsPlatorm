@@ -9,6 +9,7 @@ const SignIn = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState('');
   const [pwd, setPwd] = useState('');
+  const [error, setError] = useState(false);
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -17,7 +18,7 @@ const SignIn = () => {
       if(isLogged){
         navigate('/Home');
       } else {
-        alert("Falha ao realizar login.");
+        setError(true);
       }
     }
   }
@@ -39,7 +40,10 @@ const SignIn = () => {
         </Link>
       </div>
       <div className="h-screen flex flex-col items-center justify-center w-[35%]">
-        <span className="text-[32px] font-semibold mb-12">Entrar</span>
+        <span className="text-[32px] font-semibold mb-6">Entrar</span>
+        {
+          error && <div className="bg-red-300 h-[68px] w-[376px] text-white rounded-sm items-center flex mb-4 border-red-600 text-center content-center justify-center">Usuário ou senha incorretos.</div>
+        }
         <Input placeholder="Email / Usuário" type="email" onChange={handleUserChange}/>
         <span className="mt-4"></span>
         <Input placeholder="Password" type="password" onChange={handlePwdChange}/>
