@@ -1,7 +1,6 @@
 import HomeIcon from '@mui/icons-material/Home';
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import RestoreIcon from '@mui/icons-material/Restore';
+import AppsIcon from '@mui/icons-material/Apps';
 import { Link } from 'react-router-dom';
 
 const classIcon = 'ml-2 text-green-800 cursor-pointer mt-1';
@@ -18,15 +17,10 @@ const itemsMenu = [
     component: <PlaylistAddCheckIcon className={classIcon}  fontSize='medium' />
   },
   {
-    route: '/home',
-    description: 'Contratar Plano',
-    component: <ShoppingCartIcon className={classIcon}  fontSize='medium' />
+    route: '/projects',
+    description: 'Projetos',
+    component: <AppsIcon className={classIcon}  fontSize='medium' />
   }, 
-  {
-    route: '/home',
-    description: 'Histórico de Planos',
-    component: <RestoreIcon className={classIcon}  fontSize='medium' />
-  }
 ]
 
 const Menu = () => {
@@ -36,8 +30,10 @@ const Menu = () => {
         itemsMenu.map((icon, index) => (
           <div key={index} className='flex w-full items-center content-center p-2 ml-1'>
             <Link to={icon.route} >
-              {icon.component}
-              <span className='text-green-800 text-lg cursor-pointer ml-2 font-poppins mt-[4px]'>{icon.description}</span>
+              <div className='flex align-middle justify-center items-center'>
+                {icon.component}
+                <span className='text-green-800 text-lg cursor-pointer ml-2 font-poppins'>{icon.description}</span>
+              </div>           
             </Link>
           </div>
         ))

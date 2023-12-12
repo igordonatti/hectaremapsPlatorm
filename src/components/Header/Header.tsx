@@ -9,7 +9,7 @@ const Header = () => {
   const handleSignOut = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     auth.signOut();
-    navigate('signIn');
+    navigate('/signIn');
   }
 
   return (

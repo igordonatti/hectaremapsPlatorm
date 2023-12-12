@@ -66,6 +66,12 @@ const Services = () => {
             <span className="m-2 w-20">Status</span>
             <span className="m-6 w-20">Serviço</span>
           </div>
+
+          {
+            // Transformar esse trecho de codigo acima em um componente de Descrição
+            // Posteriormente poderia ser tbm de ordenação.
+          }
+
           {
             services.map((item, index) => {
               return <span key={index}><ServiceItem service={item}/></span>
