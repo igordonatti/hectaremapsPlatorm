@@ -1,10 +1,12 @@
 import { useState } from "react"
+import { useNavigate } from 'react-router-dom';
 import Button from "../../components/Button/Button"
 import { FileInput } from "../../components/FileInput/FileInput"
 import Header from "../../components/Header/Header"
 import Menu from "../../components/Menu/Menu"
 import { useApi } from "../../hooks/useApi"
 import Select from 'react-select';
+import { toast } from "react-toastify";
 
 const servicesOptions = [
   { value: 'ortomosaico', label: 'Ortomosaico' },
@@ -21,14 +23,22 @@ const projectsOptions = [
 const NewService = () => {
   const [fileSelect, setFileSelected] = useState<File | null>(null);
   const api = useApi();
-
+  const navigate = useNavigate();
 
   const handleFileChange = (newFile: File | null) => {
     setFileSelected(newFile);
   }
   
-  const handleSend = () => {
-    if(fileSelect !== null) api.postImage(fileSelect)
+  const handleSend = async () => {
+    try {
+      if(fileSelect !== null) {
+        await api.postImage(fileSelect);
+        toast.success("Envio bem sucedido!");
+        navigate("/");
+      }
+    } catch (error) {
+      toast.error('Erro no envio. Por favor, tente novamente!');
+    }
   }
 
   return (

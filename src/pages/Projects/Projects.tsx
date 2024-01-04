@@ -1,24 +1,27 @@
+import { useContext, useEffect, useState } from "react"
 import Header from "../../components/Header/Header"
 import Menu from "../../components/Menu/Menu"
-import ProjectItem from "../../components/ProjectItem/ProjectItem"
-import { ProjectDTO } from "./Project.dto"
-
-const projects: ProjectDTO[] = [
-  {
-    id: 0,
-    name: "Fazenda Feliz",
-  },
-  {
-    id: 1,
-    name: "Fazenda Hectaremap",
-  },
-  {
-    id: 2,
-    name: "Fazenda Igor",
-  }
-]
+import { AuthContext } from "../../contexts/Auth/AuthContext"
+import { useApi } from "../../hooks/useApi"
 
 const Projects = () => {
+  const [userProjects, setUserProjects] = useState([]);
+  const auth = useContext(AuthContext);
+  const api = useApi();
+
+  useEffect(() => {
+    const getUserProjects = async () => {
+      console.log(auth.token)
+      if(auth.token && auth.user) {
+        const userProjects = await api.getUserProjects(auth.user.id, auth.token);
+        setUserProjects(userProjects);
+      }
+    }
+
+    getUserProjects();
+    console.log(userProjects);
+  }, []);
+
   return (
     <div className="h-screen">
       <Header />
@@ -31,9 +34,11 @@ const Projects = () => {
             <span className="m-2 w-28">Nome</span>
           </div>
           {
-            projects.map((item, index) => {
+            /*
+            userProjects.map((item, index) => {
               return <span key={index}><ProjectItem project={item}/></span>
             })
+            */
           }
         </div>
       </div>
