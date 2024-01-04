@@ -11,9 +11,9 @@ const Projects = () => {
 
   useEffect(() => {
     const getUserProjects = async () => {
-      console.log(auth.token)
       if(auth.token && auth.user) {
         const userProjects = await api.getUserProjects(auth.user.id, auth.token);
+        console.log(userProjects);
         setUserProjects(userProjects);
       }
     }
