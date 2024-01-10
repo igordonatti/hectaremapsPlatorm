@@ -53,5 +53,16 @@ export const useApi = () => ({
       console.error('Erro ao obter projetos do usuário: ', error);
       throw error;
     }
+  },
+  createProject: async (name: string, userId: number, token: string) => {
+    try {
+      const response = await api.post('/project/create', {name, userId}, {
+        headers: { Authorization: `Bearer ${token}`}
+      });
+      return response.data;
+    } catch (error) {
+      console.log('Erro ao criar projeto: ', error);
+      throw error;
+    }
   }
 });

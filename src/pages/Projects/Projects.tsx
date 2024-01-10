@@ -4,6 +4,7 @@ import Menu from "../../components/Menu/Menu"
 import { AuthContext } from "../../contexts/Auth/AuthContext"
 import { useApi } from "../../hooks/useApi"
 import ProjectItem from "../../components/ProjectItem/ProjectItem"
+import { Link } from "react-router-dom"
 
 const Projects = () => {
   const [userProjects, setUserProjects] = useState([]);
@@ -29,8 +30,10 @@ const Projects = () => {
         <div className="h-[95%] mt-2 ml-8 w-full mr-6">
           <div className="w-full flex justify-between">
             <span className="text-4xl text-green-800 font-poppins font-semibold">Projetos</span>
-            <div className="flex items-center justify-center text-4xl bg-green-800 text-white rounded-full ml-auto cursor-pointer h-8 w-8">
-              <span className="mb-2">+</span>
+            <div className="flex items-center justify-center align-middle text-4xl bg-green-800 text-white rounded-full ml-auto cursor-pointer h-8 w-8">
+              <Link to={'/newProject'}>
+                <span>+</span>
+              </Link>
             </div>
           </div>
           <div className="mt-1 bg-white w-full p-3"></div>

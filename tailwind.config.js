@@ -16,6 +16,7 @@ module.exports = {
         },
         'red': {
           300: '#E57373',
+          900: '#FF0000',
         }
       },
       fontFamily: {

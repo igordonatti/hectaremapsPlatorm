@@ -10,6 +10,7 @@ import Projects from "./pages/Projects/Projects"
 import { RequireAuth } from "./contexts/Auth/RequireAuth"
 import NewService from "./pages/New Service/NewService"
 import Payment from "./pages/Payment/Payment"
+import NewProject from "./pages/New Project/NewProject"
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
       <Route path="/Projects" element={ <RequireAuth><Projects /></RequireAuth> } />
       <Route path="/NewService" element={ <RequireAuth><NewService /></RequireAuth> } />
       <Route path="/Payment" element= { <RequireAuth><Payment /></RequireAuth> } />
+      <Route path="/NewProject" element = { <RequireAuth><NewProject /></RequireAuth> } />
     </Routes>
    </div>
   )
