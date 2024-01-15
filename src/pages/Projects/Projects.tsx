@@ -20,7 +20,7 @@ const Projects = () => {
     }
 
     getUserProjects();
-  }, []);
+  }, [userProjects]);
 
   return (
     <div className="h-screen">
@@ -30,11 +30,11 @@ const Projects = () => {
         <div className="h-[95%] mt-2 ml-8 w-full mr-6">
           <div className="w-full flex justify-between">
             <span className="text-4xl text-green-800 font-poppins font-semibold">Projetos</span>
-            <div className="flex items-center justify-center align-middle text-4xl bg-green-800 text-white rounded-full ml-auto cursor-pointer h-8 w-8">
-              <Link to={'/newProject'}>
-                <span>+</span>
-              </Link>
-            </div>
+            <Link to={'/newProject'}>
+              <div className="flex bg-green-800 text-white rounded-full cursor-pointer h-8 w-8 items-center align-middle justify-center text-4xl">
+                <span className="mb-2">+</span>
+              </div>
+            </Link>
           </div>
           <div className="mt-1 bg-white w-full p-3"></div>
           {

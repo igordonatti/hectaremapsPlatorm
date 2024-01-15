@@ -3,7 +3,7 @@ import React from 'react';
 interface InputProps {
   backgroundColor?: string;
   placeholder: string;
-  height?: string;
+  height?: number;
   width?: string;
   type: string;
   options?: string[]; // Adicione um array de opções
@@ -14,10 +14,11 @@ const Input: React.FC<InputProps> = ({ height, width, type, placeholder, onChang
   const InputClasses = `
     custom-input
     ${height ? `h-[${height}px]` : 'h-[68px]'} 
-    bg-gray-300
+    bg-white
+    border
+    border-black
     ${width ? `w-[${width}px]` : 'w-[376px]'}
-    border-none
-    focus:outline-none 
+    focus:outline-green-500 
     focus:ring-0
     pl-[32px]
     placeholder:text-black
@@ -25,17 +26,12 @@ const Input: React.FC<InputProps> = ({ height, width, type, placeholder, onChang
   `
 
   return (
-    <div className='relative flex items-center'>
-      <div className="absolute inset-y-0 left-0 flex">
-        <div className="w-2 h-full bg-green-800"></div>
-      </div>
       <input
         placeholder={placeholder}
         className={InputClasses}
         type={type}
         onChange={onChange}
       />
-    </div>
   );
 }
 

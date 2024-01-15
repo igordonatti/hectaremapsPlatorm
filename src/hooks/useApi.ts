@@ -1,4 +1,5 @@
 import axios from "axios";
+import { RegisterUser } from "../types/RegisterUser";
 
 const api = axios.create({
   baseURL: 'http://localhost:3000',
@@ -62,6 +63,27 @@ export const useApi = () => ({
       return response.data;
     } catch (error) {
       console.log('Erro ao criar projeto: ', error);
+      throw error;
+    }
+  },
+  deleteProject: async (id: number, userId: number, token: string) => {    
+    try {
+      const response = await api.post('/project/delete', {id, userId}, {
+        headers: { Authorization: `Bearer ${token}`}
+      });
+
+      return response.data;
+    } catch (error) {
+      console.log('Erro ao deletar projeto: ', error);
+      throw error;
+    }
+  },
+  registerUser: async (registerForm: RegisterUser) => {
+    try {
+      const response = await api.post('/user', registerForm)
+      return response.data;
+    } catch(error) {
+      console.log('Erro ao solicitar cadastro: ', error);
       throw error;
     }
   }
