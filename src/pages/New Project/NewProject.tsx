@@ -21,7 +21,7 @@ const NewProject = () => {
     e.preventDefault();
     if (auth.user && name && auth.token) { 
       api.createProject(name, auth.user.id, auth.token);
-      navigate('/projects');
+      navigate('/projects');  
     }
     else console.log("Nome do projeto obrigatório!");
   }
@@ -35,7 +35,7 @@ const NewProject = () => {
           <div className="w-full flex justify-between">
             <span className="text-4xl text-green-800 font-poppins font-semibold">Novo Projeto</span>
           </div>
-          <div className="bg-white w-full mt-4">
+          <div className="bg-white w-full mt-4 flex flex-col">
             <Input type='text' placeholder={name ? `${name}` : "Nome"} onChange={onChangeName}/>
             <Button onClick={handleSubmitButton} placeholder='Criar' />
           </div>
