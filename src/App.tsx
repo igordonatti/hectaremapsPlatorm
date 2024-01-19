@@ -11,6 +11,8 @@ import { RequireAuth } from "./contexts/Auth/RequireAuth"
 import NewService from "./pages/New Service/NewService"
 import Payment from "./pages/Payment/Payment"
 import NewProject from "./pages/New Project/NewProject"
+import Admin from "./pages/Admin/Admin"
+import Users from "./pages/Users/Users"
 
 function App() {
 
@@ -29,6 +31,8 @@ function App() {
       <Route path="/NewService" element={ <RequireAuth><NewService /></RequireAuth> } />
       <Route path="/Payment" element= { <RequireAuth><Payment /></RequireAuth> } />
       <Route path="/NewProject" element = { <RequireAuth><NewProject /></RequireAuth> } />
+      <Route path="/Admin" element = { <RequireAuth><Admin /></RequireAuth> } />
+      <Route path="/Users" element = { <RequireAuth><Users /></RequireAuth> } />
     </Routes>
    </div>
   )

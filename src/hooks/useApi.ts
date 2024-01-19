@@ -86,5 +86,15 @@ export const useApi = () => ({
       console.log('Erro ao solicitar cadastro: ', error);
       throw error;
     }
+  },
+  getAllUsers: async (token: string) => {
+    try {
+      const response = await api.get('/user/all', {
+        headers: {Authorization: `Bearer ${token}`}
+      })
+      return response.data;
+    } catch(error) {
+      console.log('Erro ao retornar usuários')
+    }
   }
 });

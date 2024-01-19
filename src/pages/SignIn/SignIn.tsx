@@ -32,9 +32,9 @@ const SignIn = () => {
   }
 
   return (
-    <div className="flex">
-      <div className="h-screen w-[65%] bg-green-800 flex flex-col items-center justify-center">
-        <span className="text-white font-semibold text-5xl mb-12">Ainda não possui um registro?</span>
+    <div className="md:flex">
+      <div className="h-screen w-[65%] bg-green-800 flex flex-col items-center justify-center text-center">
+        <span className="text-white font-semibold text-4xl mb-12">Ainda não possui um registro?</span>
         <Link to="/SignUp">
           <Button onClick={() => console.log('ALTERAR ROTA PARA REGISTRO')} placeholder="Solicitar Cadastro" backgroundColor="bg-white" textColor="text-black"/>
         </Link>
