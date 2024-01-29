@@ -96,5 +96,11 @@ export const useApi = () => ({
     } catch(error) {
       console.log('Erro ao retornar usuários')
     }
+  },
+  getProjectByUser: async (id: number) => {
+    return {
+      id,
+      name: 'Implementar no back'
+    }
   }
 });

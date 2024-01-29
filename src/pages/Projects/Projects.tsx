@@ -39,7 +39,11 @@ const Projects = () => {
           <div className="mt-1 bg-white w-full p-3"></div>
           {
             userProjects.map((item, index) => {
-              return <span key={index}><ProjectItem project={item}/></span>
+              return (
+                <Link key={index} to='/flights'>
+                  <span key={index}><ProjectItem project={item}/></span>
+                </Link>
+              )
             })
           }
         </div>

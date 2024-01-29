@@ -13,6 +13,7 @@ import Payment from "./pages/Payment/Payment"
 import NewProject from "./pages/New Project/NewProject"
 import Admin from "./pages/Admin/Admin"
 import Users from "./pages/Users/Users"
+import { Flights } from "./pages/Flights/Flights"
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
       <Route path="/NewProject" element = { <RequireAuth><NewProject /></RequireAuth> } />
       <Route path="/Admin" element = { <RequireAuth><Admin /></RequireAuth> } />
       <Route path="/Users" element = { <RequireAuth><Users /></RequireAuth> } />
+      <Route path="/Flights" element = { <RequireAuth><Flights /></RequireAuth> } />
     </Routes>
    </div>
   )
