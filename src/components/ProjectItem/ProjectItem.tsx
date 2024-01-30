@@ -3,11 +3,9 @@ import { ProjectDTO } from "../../pages/Projects/Project.dto";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { useApi } from "../../hooks/useApi";
-import { ProjectsContext } from "../../contexts/Projects/ProjectsContext";
 
 const ProjectItem:React.FC<{project: ProjectDTO}> = ({ project }) => {
   const auth = useContext(AuthContext);
-  const projectContext = useContext(ProjectsContext);
   const api = useApi();
 
   const handleDelect = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -27,13 +25,9 @@ const ProjectItem:React.FC<{project: ProjectDTO}> = ({ project }) => {
       }
     }
   }
-
-  const handleClickOnProject = () => {
-    projectContext.setProjectId(project.id);
-  }
-
+  
   return ( 
-    <div onClick={handleClickOnProject} className="text-green-600 h-12 mt-1 bg-white w-full border-gray-600 border rounded-md flex items-center p-3 cursor-pointer justify-between hover:bg-gray-300">
+    <div className="text-green-600 h-12 mt-1 bg-white w-full border-gray-600 border rounded-md flex items-center p-3 cursor-pointer justify-between hover:bg-gray-300">
       <span className="m-6">{project.name}</span>
       <button onClick={handleDelect} className="w-8 h-8 bg-red-600 rounded-full flex align-middle justify-center items-center text-white"><DeleteIcon /></button>
     </div>

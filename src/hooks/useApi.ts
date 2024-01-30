@@ -97,7 +97,7 @@ export const useApi = () => ({
       console.log('Erro ao retornar usuários')
     }
   },
-  getProjectByUser: async (id: number) => {
+  getProjectById: async (id: number) => {
     return {
       id,
       name: 'Implementar no back'

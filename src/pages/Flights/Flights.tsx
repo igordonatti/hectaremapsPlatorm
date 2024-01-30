@@ -1,14 +1,8 @@
 import Header from "../../components/Header/Header"
 import { Link } from "react-router-dom"
 import Menu from "../../components/Menu/Menu"
-import { useContext } from "react"
-import { ProjectsContext } from "../../contexts/Projects/ProjectsContext"
 
 export const Flights = () => {
-  const project = useContext(ProjectsContext);
-
-  console.log(project)
-
   return (
     <div className="h-screen">
       <Header />
@@ -16,7 +10,7 @@ export const Flights = () => {
         <Menu />
         <div className="h-[95%] mt-2 ml-8 w-full mr-6">
           <div className="w-full flex justify-between">
-            <span className="text-4xl text-green-800 font-poppins font-semibold"> titulo {'>'} Voos</span>
+            <span className="text-4xl text-green-800 font-poppins font-semibold">Voos</span>
             <Link to={'/newProject'}>
               <div className="flex bg-green-800 text-white rounded-full cursor-pointer h-8 w-8 items-center align-middle justify-center text-4xl">
                 <span className="mb-2">+</span>
