@@ -5,6 +5,7 @@ import { AuthContext } from "../../contexts/Auth/AuthContext"
 import { useApi } from "../../hooks/useApi"
 import ProjectItem from "../../components/ProjectItem/ProjectItem"
 import { Link } from "react-router-dom"
+import { ProjectsType } from "../../types/Projects"
 
 const Projects = () => {
   const [userProjects, setUserProjects] = useState([]);
@@ -14,8 +15,8 @@ const Projects = () => {
   useEffect(() => {
     const getUserProjects = async () => {
       if(auth.token && auth.user) {
-        const userProjects = await api.getUserProjects(auth.user.id, auth.token);
-        setUserProjects(userProjects);
+        const data = await api.getUserProjects(auth.user.id, auth.token);
+        setUserProjects(data);
       }
     }
 
@@ -38,10 +39,10 @@ const Projects = () => {
           </div>
           <div className="mt-1 bg-white w-full p-3"></div>
           {
-            userProjects.map((item, index) => {
+            userProjects.map((project: ProjectsType, index) => {
               return (
-                <Link key={index} to='/flights'>
-                  <span key={index}><ProjectItem project={item}/></span>
+                <Link key={index} to={`/projects/${project.id}/flights`}>
+                  <span key={index}><ProjectItem project={project}/></span>
                 </Link>
               )
             })

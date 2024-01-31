@@ -97,10 +97,15 @@ export const useApi = () => ({
       console.log('Erro ao retornar usuários')
     }
   },
-  getProjectById: async (id: number) => {
-    return {
-      id,
-      name: 'Implementar no back'
+  getProjectById: async (id: number, token: string) => {
+    try {
+      const response = await api.get(`/project/${id}`, {
+        headers: { Authorization: `Bearer ${token}`}
+      });
+
+      return response.data;
+    } catch (error) {
+      throw new Error('useApi: error ao buscar projeto: ')
     }
   }
 });

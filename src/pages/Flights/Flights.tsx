@@ -1,8 +1,33 @@
 import Header from "../../components/Header/Header"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import Menu from "../../components/Menu/Menu"
+import { useContext, useEffect, useState } from "react";
+import { useApi } from "../../hooks/useApi";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
+import { FlightInterface } from "../../types/Flights";
+import { ProjectsType } from "../../types/Projects";
 
 export const Flights = () => {
+  const { projectId } = useParams();
+  const api = useApi();
+  const auth = useContext(AuthContext);
+  const [ flights, setFlights] = useState<FlightInterface[]>();
+
+  useEffect(() => {
+    const fetchFlights = async () => {
+      try {
+        if (projectId && auth.token){ 
+          const response: ProjectsType = await api.getProjectById(parseInt(projectId), auth.token)
+          setFlights(response.flights)
+        }
+      } catch (error) {
+        console.log("Erro ao buscar voos: ", error);
+      }
+    }
+
+    fetchFlights();
+  }, [projectId])
+
   return (
     <div className="h-screen">
       <Header />
@@ -19,7 +44,11 @@ export const Flights = () => {
           </div>
           <div className="mt-1 bg-white w-full p-3"></div>
           {
-            
+            flights?.map((item, index) => {
+              return (
+                <div key={index}>VOO {index}</div>
+              )
+            })
           }
         </div>
       </div>

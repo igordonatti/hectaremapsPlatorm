@@ -34,7 +34,7 @@ function App() {
       <Route path="/NewProject" element = { <RequireAuth><NewProject /></RequireAuth> } />
       <Route path="/Admin" element = { <RequireAuth><Admin /></RequireAuth> } />
       <Route path="/Users" element = { <RequireAuth><Users /></RequireAuth> } />
-      <Route path="/Flights" element = { <RequireAuth><Flights /></RequireAuth> } />
+      <Route path="/projects/:projectId/flights" element = { <RequireAuth><Flights /></RequireAuth> }/>
     </Routes>
    </div>
   )
