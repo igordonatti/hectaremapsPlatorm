@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { ProjectDTO } from "../../pages/Projects/Project.dto";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { useApi } from "../../hooks/useApi";
+import { ProjectsType } from "../../types/Projects";
 
-const ProjectItem:React.FC<{project: ProjectDTO}> = ({ project }) => {
+const ProjectItem:React.FC<{project: ProjectsType}> = ({ project }) => {
   const auth = useContext(AuthContext);
   const api = useApi();
 

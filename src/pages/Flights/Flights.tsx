@@ -6,6 +6,7 @@ import { useApi } from "../../hooks/useApi";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { FlightInterface } from "../../types/Flights";
 import { ProjectsType } from "../../types/Projects";
+import FlightItem from "../../components/FlightItem/FlightItem";
 
 export const Flights = () => {
   const { projectId } = useParams();
@@ -46,7 +47,7 @@ export const Flights = () => {
           {
             flights?.map((item, index) => {
               return (
-                <div key={index}>VOO {index}</div>
+                <span key={index}><FlightItem flight={item}/></span>
               )
             })
           }
