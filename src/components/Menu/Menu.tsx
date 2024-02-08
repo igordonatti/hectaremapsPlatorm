@@ -1,5 +1,4 @@
 import HomeIcon from '@mui/icons-material/Home';
-import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import AppsIcon from '@mui/icons-material/Apps';
 import { Link } from 'react-router-dom';
 
@@ -10,11 +9,6 @@ const itemsMenu = [
     route: '/home',
     description: 'Início',
     component: <HomeIcon className={classIcon} fontSize='medium' />
-  },
-  {
-    route: '/services',
-    description: 'Serviços',
-    component: <PlaylistAddCheckIcon className={classIcon}  fontSize='medium' />
   },
   {
     route: '/projects',

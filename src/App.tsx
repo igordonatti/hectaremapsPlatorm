@@ -27,7 +27,6 @@ function App() {
       <Route path="/RecoveryCode" element={ <RecoveryCode /> } />
       <Route path="/RecoveryPassword" element={ <RecoveryPassword /> } />
       <Route path="/Home" element={ <RequireAuth><FirstPage /></RequireAuth> } />
-      <Route path="/Services" element={ <RequireAuth><Services /></RequireAuth> } />
       <Route path="/Projects" element={ <RequireAuth><Projects /></RequireAuth> } />
       <Route path="/NewService" element={ <RequireAuth><NewService /></RequireAuth> } />
       <Route path="/Payment" element= { <RequireAuth><Payment /></RequireAuth> } />
@@ -35,6 +34,7 @@ function App() {
       <Route path="/Admin" element = { <RequireAuth><Admin /></RequireAuth> } />
       <Route path="/Users" element = { <RequireAuth><Users /></RequireAuth> } />
       <Route path="/projects/:projectId/flights" element = { <RequireAuth><Flights /></RequireAuth> }/>
+      <Route path="/flights/:flightId/services" element = { <RequireAuth><Services /></RequireAuth> }/>
     </Routes>
    </div>
   )
