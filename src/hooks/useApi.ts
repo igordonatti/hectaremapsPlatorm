@@ -26,12 +26,12 @@ export const useApi = () => ({
     const response = await api.post('/logout');
     return response.data;
   },
-  postImage: async (file: File) => {
+  postImage: async (file: File, idFlight: number) => {
     const formData = new FormData();
     formData.append('image', file);
 
     try {
-      const response = await api.post('/images/upload', formData, {
+      const response = await api.post('/images/upload', { formData, idFlight }, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -106,6 +106,17 @@ export const useApi = () => ({
       return response.data;
     } catch (error) {
       throw new Error('useApi: error ao buscar projeto: ')
+    }
+  },
+  createFlight: async (projectId: number, token: string) => {
+    try {
+      const response = await api.post('/flight', {projectId}, {
+        headers: { Authorization: `Bearer ${token}`}
+      });
+
+      return response.data;
+    } catch (error) {
+      throw new Error('useApi: error ao criar voo: ');
     }
   }
 });

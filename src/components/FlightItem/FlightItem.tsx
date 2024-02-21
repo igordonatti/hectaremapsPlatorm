@@ -28,7 +28,9 @@ const FlightItem:React.FC<{flight: FlightInterface}> = ({ flight }) => {
           </Link>
         </button>
         <button className="mr-6 bg-green-600 text-white w-1/2 rounded-full">
-          <span className="font-poppins p-3"><ImageIcon /></span>
+          <Link to={`/flights/${flight.id}/images`} >
+            <span className="font-poppins p-3"><ImageIcon /></span>
+          </Link>
         </button>
         <button className="w-8 h-8 bg-red-600 rounded-full flex align-middle justify-center items-center text-white"><DeleteIcon /></button>
       </div>

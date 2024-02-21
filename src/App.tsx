@@ -14,6 +14,9 @@ import NewProject from "./pages/New Project/NewProject"
 import Admin from "./pages/Admin/Admin"
 import Users from "./pages/Users/Users"
 import { Flights } from "./pages/Flights/Flights"
+import { NewFlight } from "./pages/NewFlight/NewFlight"
+import { Images } from "./pages/Images/Images"
+import { NewImage } from "./pages/NewImage/NewImage"
 
 function App() {
 
@@ -29,12 +32,15 @@ function App() {
       <Route path="/Home" element={ <RequireAuth><FirstPage /></RequireAuth> } />
       <Route path="/Projects" element={ <RequireAuth><Projects /></RequireAuth> } />
       <Route path="/NewService" element={ <RequireAuth><NewService /></RequireAuth> } />
+      <Route path="/NewFlight" element={ <RequireAuth><NewFlight /></RequireAuth> } />
       <Route path="/Payment" element= { <RequireAuth><Payment /></RequireAuth> } />
       <Route path="/NewProject" element = { <RequireAuth><NewProject /></RequireAuth> } />
       <Route path="/Admin" element = { <RequireAuth><Admin /></RequireAuth> } />
       <Route path="/Users" element = { <RequireAuth><Users /></RequireAuth> } />
       <Route path="/projects/:projectId/flights" element = { <RequireAuth><Flights /></RequireAuth> }/>
       <Route path="/flights/:flightId/services" element = { <RequireAuth><Services /></RequireAuth> }/>
+      <Route path="/flights/:flightId/images" element = { <RequireAuth><Images /></RequireAuth> }/>
+      <Route path="/flights/:flightId/images/newImage" element = { <RequireAuth><NewImage /></RequireAuth> } />
     </Routes>
    </div>
   )
