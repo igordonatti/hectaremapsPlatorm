@@ -20,7 +20,9 @@ export const NewImage = () => {
   const handleSend = async () => {
     try {
       if(fileSelect !== null && flightId) {
-        await api.postImage(fileSelect, +flightId); //preciso terminar igor continue daqui
+        console.log(fileSelect)
+
+        await api.postImage(fileSelect, flightId); //preciso terminar igor continue daqui
         toast.success("Envio bem sucedido!");
         navigate("/home");
       }

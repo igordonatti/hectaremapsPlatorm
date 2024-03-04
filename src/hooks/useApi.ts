@@ -26,12 +26,12 @@ export const useApi = () => ({
     const response = await api.post('/logout');
     return response.data;
   },
-  postImage: async (file: File, idFlight: number) => {
+  postImage: async (file: File, idFlight: string) => {
     const formData = new FormData();
     formData.append('image', file);
-
+    formData.append('idFlight', idFlight);
     try {
-      const response = await api.post('/images/upload', { formData, idFlight }, {
+      const response = await api.post('/images/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
