@@ -1,11 +1,10 @@
-import Header from "../../components/Header/Header"
 import Menu from "../../components/Menu/Menu"
 
 const FirstPage = () => {
   return (
-    <div className="">
-      <Header />
+    <div className="flex">
       <Menu />  
+      <div className="w-full ml-8"></div>
     </div>
   )
 }

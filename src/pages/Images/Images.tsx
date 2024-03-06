@@ -1,5 +1,4 @@
 import { Link, useParams } from "react-router-dom"
-import Header from "../../components/Header/Header"
 import Menu from "../../components/Menu/Menu"
 
 export const Images = () => {
@@ -7,7 +6,6 @@ export const Images = () => {
 
   return (
     <div className="h-screen">
-      <Header />
       <div className="flex">
         <Menu />
         <div className="h-[95%] mt-2 ml-8 w-full mr-6">

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom"
-import Header from "../../components/Header/Header"
 import Menu from "../../components/Menu/Menu"
 import Navigator from "../../components/Navigator/Navigator"
 import { ServiceDTO } from "../../components/serviceItem/Service.dto"
@@ -46,7 +45,6 @@ const services: ServiceDTO[] = [
 const Services = () => {
   return (
     <div className="h-screen">
-      <Header />
       <div className="flex">
         <Menu />
         <div className="h-[95%] mt-2 ml-8 w-full mr-6">

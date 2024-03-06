@@ -1,4 +1,3 @@
-import Header from "../../components/Header/Header"
 import { useParams } from "react-router-dom"
 import Menu from "../../components/Menu/Menu"
 import { useContext, useEffect, useState } from "react";
@@ -42,7 +41,6 @@ export const Flights = () => {
 
   return (
     <div className="h-screen">
-      <Header />
       <div className="flex">
         <Menu />
         <div className="h-[95%] mt-2 ml-8 w-full mr-6">
