@@ -1,48 +1,29 @@
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import Menu from "../../components/Menu/Menu"
 import Navigator from "../../components/Navigator/Navigator"
-import { ServiceDTO } from "../../components/serviceItem/Service.dto"
 import ServiceItem from "../../components/serviceItem/ServiceItem"
-
-const services: ServiceDTO[] = [
-  {
-    id: 0,
-    name: "Fazenda Hectaremaps",
-    createData: "14/03/02",
-    status: "Complete",
-    service: "Ortomosaico"
-  },
-  {
-    id: 1,
-    name: "Fazenda Feliz",
-    createData: "14/03/02",
-    status: "Não Iniciado",
-    service: "Ortomosaico"
-  },
-  {
-    id: 2,
-    name: "Fazenda Feliz",
-    createData: "14/03/02",
-    status: "Processando",
-    service: "Ortomosaico"
-  },
-  {
-    id: 3,
-    name: "Fazenda Feliz",
-    createData: "14/03/02",
-    status: "Complete",
-    service: "Ortomosaico"
-  },
-  {
-    id: 4,
-    name: "Fazenda Feliz",
-    createData: "14/03/02",
-    status: "Complete",
-    service: "Ortomosaico"
-  },
-] as ServiceDTO[];
+import { useContext, useEffect, useState } from "react"
+import { AuthContext } from "../../contexts/Auth/AuthContext"
+import { useApi } from "../../hooks/useApi"
 
 const Services = () => {
+  const { flightId } = useParams();
+  const [flightServices, setFlighServices] = useState([]);
+  const auth = useContext(AuthContext);
+  const api = useApi();
+
+  useEffect(() => {
+    const getFlightServices = async () => {
+      if(auth.token && auth.user && flightId) {
+        const data = await api.getServicesByFlight(+flightId, auth.token);
+        setFlighServices(data);
+        console.log(flightServices);
+      }
+    }
+
+    getFlightServices();
+  }, [api])
+
   return (
     <div className="h-screen">
       <div className="flex">
@@ -50,7 +31,7 @@ const Services = () => {
         <div className="h-[95%] mt-2 ml-8 w-full mr-6">
           <div className="w-full flex justify-between">
             <span className="text-4xl text-green-800 font-poppins font-semibold">Serviços</span>
-            <Link to={'/newService'} >
+            <Link to={`/${flightId}/newService`} >
               <div className="flex items-center justify-center text-4xl bg-green-800 text-white rounded-full ml-auto cursor-pointer h-8 w-8">
                 <span className="mb-2">+</span>
               </div>
@@ -71,7 +52,7 @@ const Services = () => {
           }
 
           {
-            services.map((item, index) => {
+            flightServices.map((item, index) => {
               return <span key={index}><ServiceItem service={item}/></span>
             })
           }

@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useApi } from '../../hooks/useApi';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import Header from '../../components/Header/Header';
 import Menu from '../../components/Menu/Menu';
 import { FileInput } from '../../components/FileInput/FileInput';
 import Button from '../../components/Button/Button';
@@ -33,7 +32,6 @@ export const NewImage = () => {
 
   return (
     <div className="h-screen w-screen">
-      <Header />
       <div className="flex">
         <Menu />
         <div className="h-[95%] mt-2 ml-8 w-full mr-6">

@@ -118,5 +118,17 @@ export const useApi = () => ({
     } catch (error) {
       throw new Error('useApi: error ao criar voo: ');
     }
+  },
+  getServicesByFlight: async (flightId: number, token: string) => {
+    try { 
+      const response = await api.get(`/service/${flightId}`, {
+        headers: {Authorization: `Bearer ${token}`}
+      });
+
+      return response.data;
+    } catch (error) {
+      console.error('Erro ao obter serviços deste voo: ', error);
+      throw error;
+    }
   }
 });

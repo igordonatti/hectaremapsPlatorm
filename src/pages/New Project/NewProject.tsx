@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react'
 import Button from '../../components/Button/Button'
-import Header from '../../components/Header/Header'
 import Input from '../../components/Input/Input'
 import Menu from '../../components/Menu/Menu'
 import { AuthContext } from '../../contexts/Auth/AuthContext'
@@ -28,7 +27,6 @@ const NewProject = () => {
 
   return (
     <div className="h-screen">
-      <Header />
       <div className="flex">
         <Menu />
         <div className="h-[95%] mt-2 ml-8 w-full mr-6">

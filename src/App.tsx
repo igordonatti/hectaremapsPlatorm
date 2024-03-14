@@ -31,7 +31,7 @@ function App() {
       <Route path="/RecoveryPassword" element={ <RecoveryPassword /> } />
       <Route path="/Home" element={ <RequireAuth><FirstPage /></RequireAuth> } />
       <Route path="/Projects" element={ <RequireAuth><Projects /></RequireAuth> } />
-      <Route path="/NewService" element={ <RequireAuth><NewService /></RequireAuth> } />
+      <Route path="/:flightId/NewService" element={ <RequireAuth><NewService /></RequireAuth> } />
       <Route path="/NewFlight" element={ <RequireAuth><NewFlight /></RequireAuth> } />
       <Route path="/Payment" element= { <RequireAuth><Payment /></RequireAuth> } />
       <Route path="/NewProject" element = { <RequireAuth><NewProject /></RequireAuth> } />
