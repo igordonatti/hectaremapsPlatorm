@@ -33,10 +33,12 @@ const SignIn = () => {
 
   return (
     <div className="md:flex">
-      <div className="h-screen flex flex-col items-center justify-center w-[35%]">
+      <div className="h-screen flex flex-col items-center justify-center md:w-[35%]">
         <span className="text-[32px] font-semibold mb-6">Entrar</span>
         {
-          error && <div className="bg-red-300 h-[68px] w-[376px] text-white rounded-sm items-center flex mb-4 border-red-600 text-center content-center justify-center">Usuário ou senha incorretos.</div>
+          error && <div className="bg-red-300 h-[68px] w-[376px] text-white rounded-sm items-center flex mb-4 border-red-600 text-center content-center justify-center">
+            Usuário ou senha incorretos.
+          </div>
         }
         <Input placeholder="Email / Usuário" type="email" onChange={handleUserChange}/>
         <span className="mt-4"></span>
@@ -46,7 +48,7 @@ const SignIn = () => {
         </Link>
         <Button onClick={handleSubmit} placeholder="Entrar" hover={true}/>
       </div>
-      <div className="h-screen w-[65%] bg-green-800 flex flex-col items-center justify-center text-center">
+      <div className="h-screen md:w-[65%] bg-green-800 flex flex-col items-center justify-center text-center">
         <span className="text-white font-semibold text-4xl mb-12">Ainda não possui um registro?</span>
         <Link to="/SignUp">
           <Button onClick={() => console.log('ALTERAR ROTA PARA REGISTRO')} placeholder="Solicitar Cadastro" backgroundColor="bg-white" textColor="text-black"/>

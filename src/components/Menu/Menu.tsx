@@ -30,7 +30,7 @@ const Menu = () => {
   }
 
   return (
-    <div className="bg-green-600 w-[200px] h-screen flex flex-col items-center border-r-2 justify-between">
+    <div className="bg-green-600 w-[220px] h-screen flex flex-col items-center border-r-2 justify-between">
       <div className='w-full flex flex-col items-center'>
         <span className='text-white font-poppins mt-4 mb-4 font-bold text-lg'>Hectaremaps</span>
         {

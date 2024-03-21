@@ -1,5 +1,6 @@
 import axios from "axios";
 import { RegisterUser } from "../types/RegisterUser";
+import { CreateServiceDTO } from "../pages/New Service/dto/createService.dto";
 
 const api = axios.create({
   baseURL: 'http://localhost:3000',
@@ -128,6 +129,32 @@ export const useApi = () => ({
       return response.data;
     } catch (error) {
       console.error('Erro ao obter serviços deste voo: ', error);
+      throw error;
+    }
+  },
+  getFlightsByIdProject: async (projectID: number, token: string) => {
+    try {
+      const response = await api.get(`flight/${projectID}`, {
+        headers: { Authorization: `Bearer ${token}`}
+      });
+
+      return response.data;
+    } catch (error) {
+      console.error('Erro ao obter voos: ', error);
+      throw error;
+    }
+  },
+  createServiceByFlighId: async (data: CreateServiceDTO, token: string) => {
+    console.log(data)
+
+    try {
+      const response = await api.post(`service/create`, data, {
+        headers: { Authorization: `Bearer ${token}`}
+      });
+
+      return response.data;
+    } catch (error) {
+      console.error('Erro ao criar serviço: ', error);
       throw error;
     }
   }

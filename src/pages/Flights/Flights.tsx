@@ -3,21 +3,19 @@ import Menu from "../../components/Menu/Menu"
 import { useContext, useEffect, useState } from "react";
 import { useApi } from "../../hooks/useApi";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
-import { FlightInterface } from "../../types/Flights";
-import { ProjectsType } from "../../types/Projects";
 import FlightItem from "../../components/FlightItem/FlightItem";
 
 export const Flights = () => {
   const { projectId } = useParams();
   const api = useApi();
   const auth = useContext(AuthContext);
-  const [flights, setFlights] = useState<FlightInterface[]>();
+  const [flights, setFlights] = useState([]);
 
   const handleNewFlight = async () => {
     try {
       if(auth.token && projectId){
         const response = await api.createFlight(+projectId, auth.token);
-        setFlights(prevFlights => prevFlights ? [...prevFlights, response] : [response]);
+        setFlights(response);
       }
     } catch(error) {
       console.log("Error ao criar voo: ", error);
@@ -28,8 +26,8 @@ export const Flights = () => {
     const fetchFlights = async () => {
       try {
         if (projectId && auth.token){ 
-          const response: ProjectsType = await api.getProjectById(parseInt(projectId), auth.token)
-          setFlights(response.flights)
+          const response = await api.getFlightsByIdProject(+projectId, auth.token)
+          setFlights(response)
         }
       } catch (error) {
         console.log("Erro ao buscar voos: ", error);
@@ -37,7 +35,7 @@ export const Flights = () => {
     }
 
     fetchFlights();
-  }, [projectId, auth.token])
+  }, [auth])
 
   return (
     <div className="h-screen">
@@ -52,7 +50,7 @@ export const Flights = () => {
           </div>
           <div className="mt-1 bg-white w-full p-3"></div>
           {
-            flights?.map((item, index) => {
+            flights.map((item, index) => {
               return (
                 <span key={index}><FlightItem flight={item}/></span>
               )

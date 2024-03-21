@@ -1,24 +1,16 @@
-import { ServiceDTO } from "./Service.dto"
+import { ServiceInterface } from "../../types/Services";
+import { format } from 'date-fns'
 
-function truncateString(string: string, length: number) {
-  if (string.length > length) {
-    return string.slice(0, length - 3) + "...";
-  } else {
-    return string;
-  }
-}
+const complete: string = "COMPLETE";
+const processing: string = "PROCESS";
 
-const complete: string = "Complete";
-const processando: string = "Processando";
-
-const ServiceItem: React.FC<{service: ServiceDTO}> = ({ service }) => {
+const ServiceItem: React.FC<{service: ServiceInterface}> = ({ service }) => {
   return (
     <div className="text-gray-500 h-12 mt-1 bg-white w-full border-gray-500 border rounded-md self-center flex text-center items-center p-3 flex-direction-column justify-content-start">
       <span className="w-20">{service.id}</span>
-      <span className="m-2 w-28">{truncateString(service.name, 15)}</span>
-      <span className="m-2 w-20">{service.createData}</span>
-      <span className={`m-2 w-24 font-semibold text-white ${service.status === complete ? "bg-green-200" : service.status === processando ? "bg-yellow-300" : "bg-red-600"}`}>{service.status}</span>
-      <span className="m-2 w-20">{service.service}</span>
+      <span className="m-2 w-20">{format(service.created, 'dd/MM/yyyy')}</span>
+      <span className={`m-2 w-24 font-semibold text-white ${service.status === complete ? "bg-green-200" : service.status === processing ? "bg-yellow-300" : "bg-red-600"}`}>{service.status}</span>
+      <span className="m-2 w-28">{service.serviceType }</span>
     </div>
   )
 }

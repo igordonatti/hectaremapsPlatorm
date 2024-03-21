@@ -1,10 +1,10 @@
 import { Link, useParams } from "react-router-dom"
 import Menu from "../../components/Menu/Menu"
-import Navigator from "../../components/Navigator/Navigator"
 import ServiceItem from "../../components/serviceItem/ServiceItem"
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../contexts/Auth/AuthContext"
 import { useApi } from "../../hooks/useApi"
+import { ServiceInterface } from "../../types/Services"
 
 const Services = () => {
   const { flightId } = useParams();
@@ -22,7 +22,7 @@ const Services = () => {
     }
 
     getFlightServices();
-  }, [api])
+  }, [auth])
 
   return (
     <div className="h-screen">
@@ -37,10 +37,9 @@ const Services = () => {
               </div>
             </Link>
           </div>
-          <Navigator />
+          {/* <Navigator /> */}
           <div className="text-gray-500 h-12 mt-1 bg-white w-full border-gray-500 self-center flex text-center items-center p-3 flex-direction-column justify-content-start">
             <span className="w-20">ID</span>
-            <span className="m-2 w-28">Projeto</span>
             <span className="m-2 w-20">Created</span>
             <span className="m-2 w-20">Status</span>
             <span className="m-6 w-20">Serviço</span>
@@ -52,8 +51,8 @@ const Services = () => {
           }
 
           {
-            flightServices.map((item, index) => {
-              return <span key={index}><ServiceItem service={item}/></span>
+            flightServices.map((service: ServiceInterface, index) => {
+              return <span key={index}><ServiceItem service={service}/></span>
             })
           }
         </div>
