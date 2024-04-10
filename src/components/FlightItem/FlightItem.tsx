@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { FlightInterface } from "../../types/Flights";
 import ImageIcon from '@mui/icons-material/Image';
 import { Link } from "react-router-dom";
+import { useApi } from "../../hooks/useApi";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 function converterFormatoData(data: string): string {
   const dataObj = new Date(data);
@@ -18,8 +20,17 @@ function converterFormatoData(data: string): string {
 }
 
 const FlightItem:React.FC<{flight: FlightInterface}> = ({ flight }) => {
+  const api = useApi();
+  const auth = useContext(AuthContext);
+  
+  const handleDelete = (flightId: number) => {
+    if (auth.token) {
+      api.deleteFlight(flightId, auth.token);
+    }
+  }
+
   return ( 
-    <div className="text-green-600 h-12 mt-1 cursor-none bg-white w-full border-gray-600 border rounded-md flex items-center p-3 justify-between">
+    <div className="text-green-600 h-12 mt-1 bg-white w-full border-gray-600 border rounded-md flex items-center p-3 justify-between">
       <span className="m-6">{converterFormatoData(flight.date)}</span>
       <div className="flex">
         <button className="mr-6 bg-green-600 text-white w-1/2 rounded-md">
@@ -32,7 +43,7 @@ const FlightItem:React.FC<{flight: FlightInterface}> = ({ flight }) => {
             <span className="font-poppins p-3"><ImageIcon /></span>
           </Link>
         </button>
-        <button className="w-8 h-8 bg-red-600 rounded-full flex align-middle justify-center items-center text-white"><DeleteIcon /></button>
+        <button onClick={() => handleDelete(flight.id)} className="w-9 h-8 bg-red-600 rounded-full flex align-middle justify-center items-center text-white"><DeleteIcon /></button>
       </div>
     </div>
   )

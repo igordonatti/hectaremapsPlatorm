@@ -49,6 +49,7 @@ const Menu = () => {
       <div className='align-bottom mb-10 text-white font-poppins font-semibold flex flex-col'>
         <a href="">Olá {auth.user?.name}!</a>
         <button onClick={handleSignOut} className="cursor-pointer">Sair</button>{/** Colocar um icone de sair*/}
+        <button className='cursor-pointer'>CONFIG</button>
       </div>
     </div>
   )

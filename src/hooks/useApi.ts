@@ -157,5 +157,19 @@ export const useApi = () => ({
       console.error('Erro ao criar serviço: ', error);
       throw error;
     }
+  },
+  deleteFlight: async (idFlight: number, token: string) => {
+    try {
+      console.log({idFlight})
+
+      const response = await api.post('/flight/delete', {idFlight}, {
+        headers: { Authorization: `Bearer ${token}}`}
+      })
+
+      return response;
+    } catch (error) {
+      console.error('Erro ao deletar o voo: ', error);
+      throw error;
+    }
   }
 });

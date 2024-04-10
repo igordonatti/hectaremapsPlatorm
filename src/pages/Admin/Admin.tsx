@@ -5,7 +5,6 @@ import Menu from "../../components/Menu/Menu"
 const Admin = () => {
   return (
     <div className="h-screen w-screen">
-      <Header />
       <div className="flex w-full">
         <Menu />
         <div className="h-[95%] mt-2 ml-8 mr-6">

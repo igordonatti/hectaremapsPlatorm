@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react"
-import Header from "../../components/Header/Header"
 import Menu from "../../components/Menu/Menu"
 import { AuthContext } from "../../contexts/Auth/AuthContext"
 import { useApi } from "../../hooks/useApi"
@@ -24,7 +23,6 @@ const Users = () => {
 
   return (
     <div className="h-screen">
-      <Header />
       <div className="flex">
         <Menu />
         <div className="h-[95%] mt-2 w-full ml-8 mr-6">

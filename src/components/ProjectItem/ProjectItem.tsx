@@ -11,12 +11,12 @@ const ProjectItem:React.FC<{project: ProjectsType}> = ({ project }) => {
   const handleDelect = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    const confirmClient = confirm(`Você reamente deseja excluir o Projeto ${project.name}`)
+    const confirmClient = confirm(`Você reamente deseja excluir o Projeto ${project.name}?`)
 
     if(confirmClient) {
       try {
         if(auth.user && auth.token) {
-          const response = await api.deleteProject(project.id, auth.user?.id, auth.token);
+          const response = await api.deleteProject(project.id, auth.user.id, auth.token);
           return response;
         }
       } catch (error) {
