@@ -4,7 +4,7 @@ interface InputProps {
   backgroundColor?: string;
   placeholder: string;
   height?: number;
-  width?: string;
+  width?: number;
   type: string;
   options?: string[]; // Adicione um array de opções
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -24,6 +24,8 @@ const Input: React.FC<InputProps> = ({ height, width, type, placeholder, onChang
     placeholder:text-black
     placeholder:font-semibold
   `
+
+  console.log(`${height ? `h-[${height}px]` : 'h-[68px]'}`)
 
   return (
       <input

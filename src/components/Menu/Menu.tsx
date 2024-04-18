@@ -29,8 +29,13 @@ const Menu = () => {
     navigate('/signIn');
   }
 
+  const handleConfig = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    navigate('/admin')
+  }
+
   return (
-    <div className="bg-green-600 w-[220px] h-screen flex flex-col items-center border-r-2 justify-between">
+    <div className="bg-green-600 w-[200px] h-screen flex flex-col items-center border-r-2 justify-between">
       <div className='w-full flex flex-col items-center'>
         <span className='text-white font-poppins mt-4 mb-4 font-bold text-lg'>Hectaremaps</span>
         {
@@ -49,7 +54,7 @@ const Menu = () => {
       <div className='align-bottom mb-10 text-white font-poppins font-semibold flex flex-col'>
         <a href="">Olá {auth.user?.name}!</a>
         <button onClick={handleSignOut} className="cursor-pointer">Sair</button>{/** Colocar um icone de sair*/}
-        <button className='cursor-pointer'>CONFIG</button>
+        <button onClick={handleConfig} className='cursor-pointer'>CONFIG</button>
       </div>
     </div>
   )

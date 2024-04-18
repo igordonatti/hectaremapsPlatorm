@@ -23,7 +23,7 @@ const Projects = () => {
   }, [userProjects]);
   
   return (
-    <div className="h-screen">
+    <div className="h-screen w-screen">
       <div className="flex">
         <Menu />
         <div className="h-[95%] w-full mt-2 ml-8 mr-6">

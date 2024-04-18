@@ -33,7 +33,7 @@ function App() {
       <Route path="/Projects" element={ <RequireAuth><Projects /></RequireAuth> } />
       <Route path="/:flightId/NewService" element={ <RequireAuth><NewService /></RequireAuth> } />
       <Route path="/NewFlight" element={ <RequireAuth><NewFlight /></RequireAuth> } />
-      <Route path="/Payment" element= { <RequireAuth><Payment /></RequireAuth> } />
+      <Route path="/Payment" element= { <Payment /> } />
       <Route path="/NewProject" element = { <RequireAuth><NewProject /></RequireAuth> } />
       <Route path="/Admin" element = { <RequireAuth><Admin /></RequireAuth> } />
       <Route path="/Users" element = { <RequireAuth><Users /></RequireAuth> } />
