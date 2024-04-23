@@ -27,14 +27,17 @@ export const useApi = () => ({
     const response = await api.post('/logout');
     return response.data;
   },
-  postImage: async (file: File, idFlight: string) => {
+  postImage: async (file: File, idFlight: string, token: string) => {
     const formData = new FormData();
     formData.append('image', file);
-    formData.append('idFlight', idFlight);
+
+    const url = `/images/upload?idFlight=${idFlight}`;
+
     try {
-      const response = await api.post('/images/upload', formData, {
+      const response = await api.post(url, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`
         },
       });
 

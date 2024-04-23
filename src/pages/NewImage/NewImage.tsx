@@ -1,15 +1,17 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useApi } from '../../hooks/useApi';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Menu from '../../components/Menu/Menu';
 import { FileInput } from '../../components/FileInput/FileInput';
 import Button from '../../components/Button/Button';
+import { AuthContext } from '../../contexts/Auth/AuthContext';
 
 export const NewImage = () => {
   const { flightId } = useParams();
   const [fileSelect, setFileSelected] = useState<File | null>(null);
   const api = useApi();
+  const user = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleFileChange = (newFile: File | null) => {
@@ -18,10 +20,10 @@ export const NewImage = () => {
   
   const handleSend = async () => {
     try {
-      if(fileSelect !== null && flightId) {
-        console.log(fileSelect)
+      if(fileSelect !== null && flightId && user.token) {
+        console.log(flightId)
 
-        await api.postImage(fileSelect, flightId); //preciso terminar igor continue daqui
+        await api.postImage(fileSelect, flightId, user.token); //preciso terminar igor continue daqui
         toast.success("Envio bem sucedido!");
         navigate("/home");
       }
