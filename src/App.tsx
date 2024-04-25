@@ -14,7 +14,6 @@ import NewProject from "./pages/New Project/NewProject"
 import Admin from "./pages/Admin/Admin"
 import Users from "./pages/Users/Users"
 import { Flights } from "./pages/Flights/Flights"
-import { NewFlight } from "./pages/NewFlight/NewFlight"
 import { Images } from "./pages/Images/Images"
 import { NewImage } from "./pages/NewImage/NewImage"
 
@@ -32,7 +31,6 @@ function App() {
       <Route path="/Home" element={ <FirstPage /> } />
       <Route path="/Projects" element={ <Projects /> } />
       <Route path="/:flightId/NewService" element={ <NewService /> } />
-      <Route path="/NewFlight" element={ <NewFlight /> } />
       <Route path="/Payment" element= { <Payment /> } />
       <Route path="/NewProject" element = { <NewProject /> } />
       <Route path="/Admin" element = { <Admin /> } />

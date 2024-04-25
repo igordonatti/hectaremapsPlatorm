@@ -1,20 +1,20 @@
 import { useContext, useEffect, useState } from "react"
 import Menu from "../../components/Menu/Menu"
 import { AuthContext } from "../../contexts/Auth/AuthContext"
-import { useApi } from "../../hooks/useApi"
 import ProjectItem from "../../components/ProjectItem/ProjectItem"
 import { Link } from "react-router-dom"
 import { ProjectsType } from "../../types/Projects"
+import { useProject } from "../../hooks/api/useProject"
 
 const Projects = () => {
   const [userProjects, setUserProjects] = useState([]);
   const auth = useContext(AuthContext);
-  const api = useApi();
+  const project = useProject();
 
   useEffect(() => {
     const getUserProjects = async () => {
       if(auth.token && auth.user) {
-        const data = await api.getUserProjects(auth.user.id, auth.token);
+        const data = await project.getUserProjects(auth.user.id, auth.token);
         setUserProjects(data);
       }
     }

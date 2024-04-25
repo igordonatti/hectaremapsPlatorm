@@ -1,18 +1,17 @@
 import { useContext, useState } from 'react'
-import { useApi } from '../../hooks/useApi';
-import { useNavigate, useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { useParams } from 'react-router-dom';
+import { Bounce, ToastContainer, toast } from 'react-toastify';
 import Menu from '../../components/Menu/Menu';
 import { FileInput } from '../../components/FileInput/FileInput';
 import Button from '../../components/Button/Button';
 import { AuthContext } from '../../contexts/Auth/AuthContext';
+import { useImage } from '../../hooks/api/useImages';
 
 export const NewImage = () => {
   const { flightId } = useParams();
   const [fileSelect, setFileSelected] = useState<File | null>(null);
-  const api = useApi();
+  const imageApi = useImage();
   const user = useContext(AuthContext);
-  const navigate = useNavigate();
 
   const handleFileChange = (newFile: File | null) => {
     setFileSelected(newFile);
@@ -21,11 +20,18 @@ export const NewImage = () => {
   const handleSend = async () => {
     try {
       if(fileSelect !== null && flightId && user.token) {
-        console.log(flightId)
-
-        await api.postImage(fileSelect, flightId, user.token); //preciso terminar igor continue daqui
-        toast.success("Envio bem sucedido!");
-        navigate("/home");
+        await imageApi.postImage(fileSelect, flightId, user.token); //preciso terminar igor continue daqui
+        toast.success('Envio finalizado!', {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+          });
       }
     } catch (error) {
       toast.error('Erro no envio. Por favor, tente novamente!');
@@ -43,6 +49,19 @@ export const NewImage = () => {
           <Button onClick={handleSend} placeholder="Enviar"/>
         </div>
       </div>
+
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   )
 }

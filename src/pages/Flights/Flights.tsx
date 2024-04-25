@@ -1,20 +1,20 @@
 import { useParams } from "react-router-dom"
 import Menu from "../../components/Menu/Menu"
 import { useContext, useEffect, useState } from "react";
-import { useApi } from "../../hooks/useApi";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import FlightItem from "../../components/FlightItem/FlightItem";
+import { useFlight } from "../../hooks/api/useFlight";
 
 export const Flights = () => {
   const { projectId } = useParams();
-  const api = useApi();
+  const flightApi = useFlight();
   const auth = useContext(AuthContext);
   const [flights, setFlights] = useState([]);
 
   const handleNewFlight = async () => {
     try {
       if(auth.token && projectId){
-        const response = await api.createFlight(+projectId, auth.token);
+        const response = await flightApi.createFlight(+projectId, auth.token);
         setFlights(response);
       }
     } catch(error) {
@@ -26,7 +26,7 @@ export const Flights = () => {
     const fetchFlights = async () => {
       try {
         if (projectId && auth.token){ 
-          const response = await api.getFlightsByIdProject(+projectId, auth.token)
+          const response = await flightApi.getFlightsByIdProject(+projectId, auth.token)
           setFlights(response)
         }
       } catch (error) {

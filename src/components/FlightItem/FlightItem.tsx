@@ -3,8 +3,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { FlightInterface } from "../../types/Flights";
 import ImageIcon from '@mui/icons-material/Image';
 import { Link } from "react-router-dom";
-import { useApi } from "../../hooks/useApi";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
+import { useFlight } from "../../hooks/api/useFlight";
 
 function converterFormatoData(data: string): string {
   const dataObj = new Date(data);
@@ -20,12 +20,12 @@ function converterFormatoData(data: string): string {
 }
 
 const FlightItem:React.FC<{flight: FlightInterface}> = ({ flight }) => {
-  const api = useApi();
+  const flightApi = useFlight();
   const auth = useContext(AuthContext);
   
   const handleDelete = (flightId: number) => {
     if (auth.token) {
-      api.deleteFlight(flightId, auth.token);
+      flightApi.deleteFlight(flightId, auth.token);
     }
   }
 

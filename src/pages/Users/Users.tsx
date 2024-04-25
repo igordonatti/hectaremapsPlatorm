@@ -1,19 +1,19 @@
 import { useContext, useEffect, useState } from "react"
 import Menu from "../../components/Menu/Menu"
 import { AuthContext } from "../../contexts/Auth/AuthContext"
-import { useApi } from "../../hooks/useApi"
 import { Link } from "react-router-dom"
 import Userdesc from "../../components/Userdesc/Userdesc"
+import { useUser } from "../../hooks/api/useUser"
 
 const Users = () => {
   const [users, setUsers] = useState([]);
   const auth = useContext(AuthContext);
-  const api = useApi();
+  const userApi = useUser();
 
   useEffect(() => {
     const getUsers = async () => {
       if(auth.token && auth.user) {
-        const usersFromApi = await api.getAllUsers(auth.token);
+        const usersFromApi = await userApi.getAllUsers(auth.token);
         setUsers(usersFromApi);
       }
     }

@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { AuthContext } from "../../contexts/Auth/AuthContext";
-import { useApi } from "../../hooks/useApi";
 import { ProjectsType } from "../../types/Projects";
+import { useProject } from "../../hooks/api/useProject";
 
 const ProjectItem:React.FC<{project: ProjectsType}> = ({ project }) => {
   const auth = useContext(AuthContext);
-  const api = useApi();
+  const projectApi = useProject();
 
   const handleDelect = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -16,7 +16,7 @@ const ProjectItem:React.FC<{project: ProjectsType}> = ({ project }) => {
     if(confirmClient) {
       try {
         if(auth.user && auth.token) {
-          const response = await api.deleteProject(project.id, auth.user.id, auth.token);
+          const response = await projectApi.deleteProject(project.id, auth.user.id, auth.token);
           return response;
         }
       } catch (error) {

@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
 import { User } from "../../types/User";
-import { useApi } from "../../hooks/useApi";
+import { useAuth } from "../../hooks/api/useAuth";
 
 export const AuthProvider = ({ children }: { children: JSX.Element}) => {
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(null);
-  const api = useApi();
+  const apiAuth = useAuth();
 
   useEffect(() => {
     const validateToken = async () => {
       const storageUser = localStorage.getItem('user');
 
       if(storageUser) {
-        const data = await api.validateToken(JSON.parse(storageUser).access_token);
+        const data = await apiAuth.validateToken(JSON.parse(storageUser).access_token);
 
         if(data) {
           setUser(JSON.parse(storageUser));
@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element}) => {
   }, [])
 
   const signIn = async (email: string, pwd: string) => {
-    const data = await api.signIn(email, pwd);
+    const data = await apiAuth.signIn(email, pwd);
     if(data) {
       if(data.name && data.access_token) {
         setUser(data);

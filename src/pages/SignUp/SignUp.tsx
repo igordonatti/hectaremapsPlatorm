@@ -3,10 +3,10 @@ import Button from "../../components/Button/Button"
 import Input from "../../components/Input/Input"
 import { useState } from "react"
 import { RegisterUser } from "../../types/RegisterUser"
-import { useApi } from "../../hooks/useApi"
+import { useUser } from "../../hooks/api/useUser"
 
 const SignUp = () => {
-  const api = useApi();
+  const userApi = useUser();
   const [formData, setFormData] = useState<RegisterUser>({
     name: "",
     lastname: "",
@@ -26,7 +26,7 @@ const SignUp = () => {
   }
 
   const handleRegister = async () => {  
-    const response = await api.registerUser(formData);
+    const response = await userApi.registerUser(formData);
     console.log(response);
   }
 

@@ -3,13 +3,13 @@ import Button from '../../components/Button/Button'
 import Input from '../../components/Input/Input'
 import Menu from '../../components/Menu/Menu'
 import { AuthContext } from '../../contexts/Auth/AuthContext'
-import { useApi } from '../../hooks/useApi'
 import { useNavigate } from 'react-router-dom'
+import { useProject } from '../../hooks/api/useProject'
 
 const NewProject = () => {
   const [name, setName] = useState('');
   const auth = useContext(AuthContext);
-  const api = useApi();
+  const project = useProject();
   const navigate = useNavigate();
   
   const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +19,7 @@ const NewProject = () => {
   const handleSubmitButton = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (auth.user && name && auth.token) { 
-      api.createProject(name, auth.user.id, auth.token);
+      project.createProject(name, auth.user.id, auth.token);
       navigate('/projects');  
     }
     else console.log("Nome do projeto obrigatório!");

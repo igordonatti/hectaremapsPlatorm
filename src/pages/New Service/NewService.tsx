@@ -3,10 +3,10 @@ import Button from "../../components/Button/Button"
 import Menu from "../../components/Menu/Menu"
 import Select from 'react-select';
 import { toast } from "react-toastify";
-import { useApi } from '../../hooks/useApi';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth/AuthContext';
 import { CreateServiceDTO } from './dto/createService.dto';
+import { useService } from '../../hooks/api/useService';
 
 const servicesOptions = [
   { value: 'ortomosaico', label: 'Ortomosaico' },
@@ -15,7 +15,7 @@ const servicesOptions = [
 ]
 
 const NewService = () => {
-  const api = useApi();
+  const serviceApi = useService();
   const auth = useContext(AuthContext);
   const [formData, setFormData] = useState<CreateServiceDTO>({
     name: "",
@@ -39,7 +39,7 @@ const NewService = () => {
   const handleSend = async () => {
     try {
       if(flightId && auth.token){
-        const response = api.createServiceByFlighId(formData, auth.token)
+        const response = serviceApi.createServiceByFlighId(formData, auth.token)
         
         return response;
       }

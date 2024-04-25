@@ -3,19 +3,19 @@ import Menu from "../../components/Menu/Menu"
 import ServiceItem from "../../components/serviceItem/ServiceItem"
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../contexts/Auth/AuthContext"
-import { useApi } from "../../hooks/useApi"
 import { ServiceInterface } from "../../types/Services"
+import { useService } from "../../hooks/api/useService"
 
 const Services = () => {
   const { flightId } = useParams();
   const [flightServices, setFlighServices] = useState([]);
   const auth = useContext(AuthContext);
-  const api = useApi();
+  const serviceApi = useService();
 
   useEffect(() => {
     const getFlightServices = async () => {
       if(auth.token && auth.user && flightId) {
-        const data = await api.getServicesByFlight(+flightId, auth.token);
+        const data = await serviceApi.getServicesByFlight(+flightId, auth.token);
         setFlighServices(data);
         console.log(flightServices);
       }
