@@ -1,17 +1,16 @@
 import { useParams } from 'react-router-dom';
 import Button from "../../components/Button/Button"
 import Menu from "../../components/Menu/Menu"
-import Select from 'react-select';
-import { toast } from "react-toastify";
+import Select, { SingleValue } from 'react-select';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth/AuthContext';
 import { CreateServiceDTO } from './dto/createService.dto';
 import { useService } from '../../hooks/api/useService';
 
 const servicesOptions = [
-  { value: 'ortomosaico', label: 'Ortomosaico' },
-  { value: 'mapa geral', label: 'MapaGeral' },
-  { value: 'mapa 2d', label: 'MapaDoisD' }
+  { value: 'ORTOMOSAICO', label: 'Ortomosaico' },
+  { value: 'MAPAGERAL', label: 'MapaGeral' },
+  { value: 'MAPA2D', label: 'MapaDoisD' }
 ]
 
 const NewService = () => {
@@ -23,28 +22,26 @@ const NewService = () => {
   })
   const { flightId } = useParams();
   
-  const handleChange = () => {
+  const handleChange = (event: SingleValue<{ value: string; label: string; }>) => {
     if(flightId) {
       setFormData(
         {
-          name: 'ORTOMOSAICO',
+          name: event?.value ? event.value : '',
           flightId: +flightId,
         }
       )
     }
-
-    console.log(formData);
   }
   
   const handleSend = async () => {
     try {
       if(flightId && auth.token){
-        const response = serviceApi.createServiceByFlighId(formData, auth.token)
+        const response = serviceApi.createServiceByFlighId(formData, auth.token);
         
         return response;
       }
     } catch (error) {
-      toast.error('Erro no envio. Por favor, tente novamente!');
+      console.error("Erro ao solicitar novo serviço");
     }
   }
 
@@ -54,7 +51,7 @@ const NewService = () => {
         <Menu />
         <div className="h-[95%] mt-2 ml-8 w-full mr-6">
           <span className="text-4xl text-green-800 font-poppins font-semibold">Novo Serviço</span>
-          <Select onChange={handleChange} className="mt-2 w-[80%]" placeholder="Selecione o(s) serviço(s)" options={servicesOptions} />
+          <Select onChange={(event) => handleChange(event)} className="mt-2 w-[80%]" placeholder="Selecione o(s) serviço(s)" options={servicesOptions} />
           <div className="mt-4"></div>
           <Button onClick={handleSend} placeholder="Enviar"/>
         </div>
