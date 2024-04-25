@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Button from "../../components/Button/Button"
 import Menu from "../../components/Menu/Menu"
 import Select, { SingleValue } from 'react-select';
@@ -14,6 +14,7 @@ const servicesOptions = [
 ]
 
 const NewService = () => {
+  const navigate = useNavigate();
   const serviceApi = useService();
   const auth = useContext(AuthContext);
   const [formData, setFormData] = useState<CreateServiceDTO>({
@@ -38,6 +39,7 @@ const NewService = () => {
       if(flightId && auth.token){
         const response = serviceApi.createServiceByFlighId(formData, auth.token);
         
+        navigate(`/flights/${flightId}/services`);
         return response;
       }
     } catch (error) {
