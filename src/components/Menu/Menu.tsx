@@ -1,4 +1,3 @@
-import HomeIcon from '@mui/icons-material/Home';
 import AppsIcon from '@mui/icons-material/Apps';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
@@ -7,11 +6,6 @@ import { AuthContext } from '../../contexts/Auth/AuthContext';
 const classIcon = 'ml-2 text-white cursor-pointer';
 
 const itemsMenu = [
-  {
-    route: '/home',
-    description: 'Início',
-    component: <HomeIcon className={classIcon} fontSize='medium' />
-  },
   {
     route: '/projects',
     description: 'Projetos',

@@ -16,7 +16,7 @@ const SignIn = () => {
     if(user && pwd) {
       const isLogged = await auth.signIn(user, pwd);
       if(isLogged){
-        navigate('/Home');
+        navigate('/projects');
       } else {
         setError(true);
       }
