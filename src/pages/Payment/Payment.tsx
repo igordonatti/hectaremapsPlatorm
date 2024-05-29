@@ -3,7 +3,7 @@ import { TextField } from "@mui/material"
 const Payment = () => {
   return (
     <div className="w-screen h-screen bg-gray-300 flex justify-center items-center">
-      <div className="bg-white w-1/2 h-1/2 p-6 shadow-lg rounded-lg">
+      <div className="bg-white w-1/2 h-1/2 p-6 shadow-lg rounded-lg border border-solid border-green-600">
         <div className="flex justify-between mb-10 mt-10">
           <span className="text-lg font-light">Total</span>
           <div className="text-lg font-light">
