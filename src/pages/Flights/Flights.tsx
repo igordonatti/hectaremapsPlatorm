@@ -14,8 +14,7 @@ export const Flights = () => {
   const handleNewFlight = async () => {
     try {
       if(auth.token && projectId){
-        const response = await flightApi.createFlight(+projectId, auth.token);
-        setFlights(response);
+        await flightApi.createFlight(+projectId, auth.token);
       }
     } catch(error) {
       console.log("Error ao criar voo: ", error);
@@ -35,7 +34,7 @@ export const Flights = () => {
     }
 
     fetchFlights();
-  }, [auth])
+  })
 
   return (
     <div className="h-screen">
