@@ -2,14 +2,13 @@ import AppsIcon from '@mui/icons-material/Apps';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/Auth/AuthContext';
-
-const classIcon = 'ml-2 text-white cursor-pointer';
+import icon from '../../assets/icon.svg';
 
 const itemsMenu = [
   {
     route: '/projects',
     description: 'Projetos',
-    component: <AppsIcon className={classIcon}  fontSize='medium' />
+    component: <AppsIcon className='text-white cursor-pointer' fontSize='medium' />
   }, 
 ]
 
@@ -29,19 +28,14 @@ const Menu = () => {
   }
 
   return (
-    <div className="bg-green-600 w-[200px] h-screen flex flex-col items-center border-r-2 justify-between">
+    <div className="bg-green-600 w-[76px] h-screen flex flex-col items-center text-center justify-between">
       <div className='w-full flex flex-col items-center'>
-        <span className='text-white font-poppins mt-4 mb-4 font-bold text-lg'>Hectaremaps</span>
+        <img src={icon} alt="Hectaremaps Plataform" />
         {
           itemsMenu.map((icon, index) => (
-            <div key={index} className='flex w-full p-2 ml-1'>
-              <Link to={icon.route} >
-                <div className='flex justify-center items-center'>
-                  {icon.component}
-                  <span className='text-white text-lg cursor-pointer ml-2 font-poppins'>{icon.description}</span>
-                </div>           
-              </Link>
-            </div>
+            <Link key={index} to={icon.route} >
+              {icon.component}
+            </Link>
           ))
         }
       </div>

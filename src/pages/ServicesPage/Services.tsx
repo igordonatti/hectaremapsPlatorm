@@ -22,13 +22,13 @@ const Services = () => {
     }
 
     getFlightServices();
-  }, [auth])
+  }, [])
 
   return (
     <div className="h-screen">
       <div className="flex">
         <Menu />
-        <div className="h-[95%] mt-2 ml-8 w-full mr-6">
+        <div className="h-[95%] mt-2 ml-8 w-[90%] mr-6">
           <div className="w-full flex justify-between">
             <span className="text-4xl text-green-800 font-poppins font-semibold">Serviços</span>
             <Link to={`/${flightId}/newService`} >
@@ -44,11 +44,6 @@ const Services = () => {
             <span className="m-2 w-20">Status</span>
             <span className="m-6 w-20">Serviço</span>
           </div>
-
-          {
-            // Transformar esse trecho de codigo acima em um componente de Descrição
-            // Posteriormente poderia ser tbm de ordenação.
-          }
 
           {
             flightServices.map((service: ServiceInterface, index) => {

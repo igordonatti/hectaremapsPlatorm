@@ -19,7 +19,7 @@ import { NewImage } from "./pages/NewImage/NewImage"
 function App() {
 
   return (
-   <div className="App">
+   <div className="App min-h-screen">
     <Routes>
       <Route path="/" element={ <App /> } />
       <Route path="/SignUp" element={ <SignUp /> } />
@@ -35,6 +35,7 @@ function App() {
       <Route path="/Users" element = { <RequireAuth><Users /></RequireAuth> } />
       <Route path="/projects/:projectId/flights" element = { <RequireAuth><Flights /></RequireAuth> }/>
       <Route path="/flights/:flightId/services" element = { <RequireAuth><Services /></RequireAuth> }/>
+      
       <Route path="/flights/:flightId/images" element = { <RequireAuth><Images /></RequireAuth> }/>
       <Route path="/flights/:flightId/images/newImage" element = { <RequireAuth><NewImage /></RequireAuth> } />
     </Routes>

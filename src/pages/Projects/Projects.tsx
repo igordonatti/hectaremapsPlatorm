@@ -26,7 +26,7 @@ const Projects = () => {
     <div className="h-screen w-screen">
       <div className="flex">
         <Menu />
-        <div className="h-[95%] w-full mt-2 ml-8 mr-6">
+        <div className="h-[95%] w-[90%] mt-2 ml-8 mr-6">
           <div className="flex justify-between">
             <span className="text-4xl text-green-800 font-poppins font-semibold">Projetos</span>
             <Link to={'/newProject'}>

@@ -6,7 +6,7 @@ const Admin = () => {
     <div className="h-screen w-screen">
       <div className="flex">
         <Menu />
-        <div className="h-[95%] w-full mt-2 ml-8 mr-6">
+        <div className="h-[95%] w-[90%] mt-2 ml-8 mr-6">
           <span className="text-4xl text-green-800 font-semibold font-poppins">Administração</span>
           <div className="grid grid-rows gap-2 mt-4">
             <Link to={'/users'}>

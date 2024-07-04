@@ -8,6 +8,8 @@ export const useService = () => ({
         headers: {Authorization: `Bearer ${token}`}
       });
 
+      console.log(response)
+
       return response.data;
     } catch (error) {
       console.error('Erro ao obter serviços deste voo: ', error);

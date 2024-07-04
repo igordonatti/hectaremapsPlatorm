@@ -40,7 +40,7 @@ export const Flights = () => {
     <div className="h-screen">
       <div className="flex">
         <Menu />
-        <div className="h-[95%] mt-2 ml-8 w-full mr-6">
+        <div className="h-[95%] mt-2 ml-8 w-[90%] mr-6">
           <div className="w-full flex justify-between">
             <span className="text-4xl text-green-800 font-poppins font-semibold">Voos</span>
             <div onClick={handleNewFlight} className="flex bg-green-800 text-white rounded-full cursor-pointer h-8 w-8 items-center align-middle justify-center text-4xl">
