@@ -21,4 +21,22 @@ export const useImage = () => ({
       throw error; // Propaga o erro para que quem chama este método possa tratá-lo
     }
   },
+
+  getImagesFromFlightID: async (idFlight: number, token: string) => {
+    try {
+      const response = await api.get(`/images/imagesFromFlight/${idFlight}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      console.log(response);
+
+      return response.data;
+    } catch (error) {
+        throw new Error("Erro ao recuperar as imagens");
+    }
+  },
+
+  dowloadArchive: async () => {}
 })

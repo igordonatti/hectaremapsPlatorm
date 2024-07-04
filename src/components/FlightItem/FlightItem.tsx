@@ -25,7 +25,9 @@ const FlightItem:React.FC<{flight: FlightInterface}> = ({ flight }) => {
   
   const handleDelete = (flightId: number) => {
     if (auth.token) {
-      flightApi.deleteFlight(flightId, auth.token);
+      const userConfirm = window.confirm('Tem certeza que deseja deletar este voo? Este procedimento é irreversível e apagará as imagens do voo!');
+      
+      if(userConfirm) flightApi.deleteFlight(flightId, auth.token);
     }
   }
 

@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react'
-import { useParams } from 'react-router-dom';
-import { Bounce, ToastContainer, toast } from 'react-toastify';
+import { useNavigate, useParams } from 'react-router-dom';
 import Menu from '../../components/Menu/Menu';
 import { FileInput } from '../../components/FileInput/FileInput';
 import Button from '../../components/Button/Button';
@@ -10,6 +9,8 @@ import { useImage } from '../../hooks/api/useImages';
 export const NewImage = () => {
   const { flightId } = useParams();
   const [fileSelect, setFileSelected] = useState<File | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate()
   const imageApi = useImage();
   const user = useContext(AuthContext);
 
@@ -20,21 +21,14 @@ export const NewImage = () => {
   const handleSend = async () => {
     try {
       if(fileSelect !== null && flightId && user.token) {
-        await imageApi.postImage(fileSelect, flightId, user.token); //preciso terminar igor continue daqui
-        toast.success('Envio finalizado!', {
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-          transition: Bounce,
-          });
+        setIsLoading(true);
+        await imageApi.postImage(fileSelect, flightId, user.token); 
+        setIsLoading(false);
+        navigate('/projects');
       }
     } catch (error) {
-      toast.error('Erro no envio. Por favor, tente novamente!');
+      setIsLoading(false);
+      console.error('Erro no envio. Por favor, tente novamente!');
     }
   }
 
@@ -47,21 +41,11 @@ export const NewImage = () => {
           <div className="mt-4"></div>
           <FileInput onFileChange={handleFileChange} />
           <Button onClick={handleSend} placeholder="Enviar"/>
+          {
+            isLoading ? <div className=''>Enviando... Isso pode demorar alguns minutos</div> : null
+          }
         </div>
       </div>
-
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
     </div>
   )
 }

@@ -12,6 +12,7 @@ export const useFlight = () => ({
       throw new Error('useApi: error ao criar voo: ');
     }
   },
+
   getFlightsByIdProject: async (projectID: number, token: string) => {
     try {
       const response = await api.get(`flight/${projectID}`, {
@@ -24,10 +25,13 @@ export const useFlight = () => ({
       throw error;
     }
   },
+  
   deleteFlight: async (idFlight: number, token: string) => {
+    console.log(idFlight);
+
     try {
       const response = await api.post('/flight/delete', {idFlight}, {
-        headers: { Authorization: `Bearer ${token}}`}
+        headers: { Authorization: `Bearer ${token}`}
       });
 
       return response;
