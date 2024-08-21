@@ -32,20 +32,20 @@ const FlightItem:React.FC<{flight: FlightInterface}> = ({ flight }) => {
   }
 
   return ( 
-    <div className="text-green-600 h-12 mt-1 bg-white w-full border-gray-600 border rounded-md flex items-center p-3 justify-between">
+    <div className="font-poppins text-green-600 h-12 mt-1 bg-gray-100 w-ful rounded-r-md flex items-center p-3 justify-between border-l-4 border-green-800">
       <span className="m-6">{converterFormatoData(flight.date)}</span>
-      <div className="flex">
-        <button className="mr-6 bg-green-600 text-white w-1/2 rounded-md">
+      <div className="flex gap-2">
+        <button className="bg-green-600 text-white w-1/2 rounded-md">
           <Link to={`/flights/${flight.id}/services`}>
             <span className="font-poppins p-2">Serviços</span>
           </Link>
         </button>
-        <button className="mr-6 bg-green-600 text-white w-1/2 rounded-full">
+        <button className="bg-green-600 text-white rounded-lg">
           <Link to={`/flights/${flight.id}/images`} >
-            <span className="font-poppins p-3"><ImageIcon /></span>
+            <span className="p-3"><ImageIcon /></span>
           </Link>
         </button>
-        <button onClick={() => handleDelete(flight.id)} className="w-9 h-8 bg-red-600 rounded-full flex align-middle justify-center items-center text-white"><DeleteIcon /></button>
+        <button onClick={() => handleDelete(flight.id)} className="w-12 h-9 bg-red-600 rounded-lg flex align-middle justify-center items-center text-white"><DeleteIcon /></button>
       </div>
     </div>
   )

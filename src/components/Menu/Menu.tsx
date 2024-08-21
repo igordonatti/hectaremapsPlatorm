@@ -28,19 +28,22 @@ const Menu = () => {
   }
 
   return (
-    <div className="bg-green-600 w-[76px] h-screen flex flex-col items-center text-center justify-between">
-      <div className='w-full flex flex-col items-center'>
-        <img src={icon} alt="Hectaremaps Plataform" />
+    <div className="shadow-inner bg-green-600 w-[160px] min-h-screen flex flex-col items-center text-center justify-between shas">
+      <div className='w-full flex flex-col items-center gap-4'>
+        <div className='flex justify-center align-middle items-center'>
+          <img src={icon} alt="Hectaremaps Plataform" className='w-12 flex align-middle justify-center items-center' />
+          <a className='text-white font-semibold' href="">HCTM</a>
+        </div>
         {
           itemsMenu.map((icon, index) => (
-            <Link key={index} to={icon.route} >
-              {icon.component}
+            <Link key={index} to={icon.route} className='text-white font-semibold' >
+              {icon.component} {icon.description}
             </Link>
           ))
         }
       </div>
       <div className='align-bottom mb-10 text-white font-poppins font-semibold flex flex-col'>
-        <a href="">Olá {auth.user?.name}!</a>
+        <a>Olá,  {auth.user?.name}!</a>
         <button onClick={handleSignOut} className="cursor-pointer">Sair</button>{/** Colocar um icone de sair*/}
         <button onClick={handleConfig} className='cursor-pointer'>CONFIG</button>
       </div>

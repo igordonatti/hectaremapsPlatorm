@@ -32,14 +32,14 @@ export const Images = () => {
       <Menu />
       <div className="mt-2 ml-8 w-[90%] mr-6">
         <div className="flex justify-between">
-          <span className="text-4xl text-green-800 font-poppins font-semibold">Imagens</span>
+          <span className="text-4xl text-green-800 font-poppins font-semibold">Arquivos</span>
           <Link to={`/flights/${flightId}/images/newImage`}>
             <div className="flex bg-green-800 text-white rounded-full cursor-pointer h-8 w-8 items-center align-middle justify-center text-4xl">
               <span className="mb-2">+</span>
             </div>
           </Link>
         </div>
-        <div className="mt-4 grid grid-flow-col grid-cols-4 gap-4">
+        <div className="teste mt-4 grid grid-flow-col grid-cols-4 gap-4 min-h-screen w-full">
           {
             images.map((item, index) => {
               return (

@@ -39,11 +39,11 @@ export const NewImage = () => {
         <div className="h-[95%] mt-2 ml-8 w-full mr-6">
           <span className="text-4xl text-green-800 font-poppins font-semibold">Carregar Imagens</span>
           <div className="mt-4"></div>
-          <FileInput onFileChange={handleFileChange} />
-          <Button onClick={handleSend} placeholder="Enviar"/>
-          {
-            isLoading ? <div className=''>Enviando... Isso pode demorar alguns minutos</div> : null
-          }
+            <FileInput onFileChange={handleFileChange} />
+            <Button onClick={handleSend} placeholder="Enviar"/>
+            {
+              isLoading ? <div className=''>Enviando... Isso pode demorar alguns minutos</div> : null
+            }
         </div>
       </div>
     </div>

@@ -5,17 +5,13 @@ import { MdFolderZip } from "react-icons/md";
 const ArchiveItem:React.FC<{archive: ArchiveInterface}> = ({archive}) => {
 
   const handleClick = () => {
-    console.log('click')
+    console.log('Fazer Dowload do Arquivo')
   }
 
   return (
-    <div onClick={handleClick} className='cursor-pointer flex border-2 border-solid text-eden-900 gap-2 border-eden-900 h-12 rounded align-middle items-center p-2'>
-      <div className=''>
-        <MdFolderZip size={'1.5em'} />
-      </div>
-      <div>
+    <div onClick={handleClick} className='cursor-pointer flex bg-gray-100 rounded-r-lg h-12 items-center border-l-4 border-l-green-800 gap-2 p-2 font-poppins'>
+        <MdFolderZip size={'1.5em'} /> 
         <span>{archive.filename}</span>
-      </div>
     </div>
   )
 }

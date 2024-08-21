@@ -37,14 +37,6 @@ const Services = () => {
               </div>
             </Link>
           </div>
-          {/* <Navigator /> */}
-          <div className="text-gray-500 h-12 mt-1 bg-white w-full border-gray-500 self-center flex text-center items-center p-3 flex-direction-column justify-content-start">
-            <span className="w-20">ID</span>
-            <span className="m-2 w-20">Created</span>
-            <span className="m-2 w-20">Status</span>
-            <span className="m-6 w-20">Serviço</span>
-          </div>
-
           {
             flightServices.map((service: ServiceInterface, index) => {
               return <span key={index}><ServiceItem service={service}/></span>

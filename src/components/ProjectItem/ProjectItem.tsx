@@ -27,7 +27,7 @@ const ProjectItem:React.FC<{project: ProjectsType}> = ({ project }) => {
   }
   
   return ( 
-    <div className="text-green-600 h-12 mt-1 bg-white border-gray-600 border rounded-md flex items-center p-3 cursor-pointer justify-between hover:bg-gray-300">
+    <div className="text-green-600 h-12 font-poppins mt-1 bg-gray-100 rounded-r-lg flex items-center p-3 cursor-pointer justify-between hover:bg-gray-300 border-l-4 border-l-green-800">
       <span className="m-6">{project.name}</span>
       <button onClick={handleDelect} className="w-8 h-8 bg-red-600 rounded-full flex align-middle justify-center items-center text-white"><DeleteIcon /></button>
     </div>

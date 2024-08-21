@@ -25,8 +25,6 @@ const Input: React.FC<InputProps> = ({ height, width, type, placeholder, onChang
     placeholder:font-semibold
   `
 
-  console.log(`${height ? `h-[${height}px]` : 'h-[68px]'}`)
-
   return (
       <input
         placeholder={placeholder}
