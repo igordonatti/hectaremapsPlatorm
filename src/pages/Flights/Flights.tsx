@@ -47,7 +47,7 @@ export const Flights = () => {
               <span className="mb-2">+</span>
             </div>
           </div>
-          <div className="mt-1 bg-white w-full p-3"></div>
+          <div className="mt-6 bg-white w-full"></div>
           {
             flights.map((item, index) => {
               return (

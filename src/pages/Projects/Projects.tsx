@@ -35,12 +35,11 @@ const Projects = () => {
               </div>
             </Link>
           </div>
-          <div className="mt-1 bg-white p-3"></div>
           {
             userProjects.map((project: ProjectsType, index) => {
               return (
                 <Link key={index} to={`/projects/${project.id}/flights`}>
-                  <span key={index}><ProjectItem project={project}/></span>
+                  <div key={index} className="mt-6"><ProjectItem project={project}/></div>
                 </Link>
               )
             })

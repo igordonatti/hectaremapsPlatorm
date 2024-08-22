@@ -2,13 +2,12 @@ import AppsIcon from '@mui/icons-material/Apps';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/Auth/AuthContext';
-import icon from '../../assets/icon.svg';
 
 const itemsMenu = [
   {
     route: '/projects',
     description: 'Projetos',
-    component: <AppsIcon className='text-white cursor-pointer' fontSize='medium' />
+    component: <AppsIcon className='text-green-800 cursor-pointer' fontSize='medium' />
   }, 
 ]
 
@@ -28,21 +27,20 @@ const Menu = () => {
   }
 
   return (
-    <div className="shadow-inner bg-green-600 w-[160px] min-h-screen flex flex-col items-center text-center justify-between shas">
+    <div className="shadow-inner text-green-800 font-poppins bg-gray-100 w-[160px] min-h-screen flex flex-col items-center text-center justify-between">
       <div className='w-full flex flex-col items-center gap-4'>
-        <div className='flex justify-center align-middle items-center'>
-          <img src={icon} alt="Hectaremaps Plataform" className='w-12 flex align-middle justify-center items-center' />
-          <a className='text-white font-semibold' href="">HCTM</a>
+        <div className='h-16 text-white w-full bg-green-800 flex justify-center align-middle items-center text-lg'>
+          Hectaremaps
         </div>
         {
           itemsMenu.map((icon, index) => (
-            <Link key={index} to={icon.route} className='text-white font-semibold' >
+            <Link key={index} to={icon.route} className='text-green-800 font-semibold flex items-center gap-2' >
               {icon.component} {icon.description}
             </Link>
           ))
         }
       </div>
-      <div className='align-bottom mb-10 text-white font-poppins font-semibold flex flex-col'>
+      <div className='align-bottom mb-10 font-semibold flex flex-col'>
         <a>Olá,  {auth.user?.name}!</a>
         <button onClick={handleSignOut} className="cursor-pointer">Sair</button>{/** Colocar um icone de sair*/}
         <button onClick={handleConfig} className='cursor-pointer'>CONFIG</button>

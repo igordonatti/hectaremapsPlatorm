@@ -25,9 +25,9 @@ const Users = () => {
     <div className="h-screen">
       <div className="flex">
         <Menu />
-        <div className="h-[95%] mt-2 w-full ml-8 mr-6">
+        <div className="h-[95%] mt-2 w-[90%] ml-8 mr-6">
           <span className="text-4xl text-green-800 font-semibold font-poppins"><Link to={'/admin'}>Administração</Link> {">"} Usuários</span>
-          <div className="mt-4">
+          <div className="mt-6">
             {
               users.map((item, index) => {
                 return <Userdesc key={index} user={item} />

@@ -37,9 +37,15 @@ const Services = () => {
               </div>
             </Link>
           </div>
+          <div className="ml-1 text-green-800 font-semibold mt-4 grid grid-flow-col grid-cols-4 items-center text-center font-poppins">
+            <div>ID</div>
+            <div>Data de Criação</div>
+            <div>Status</div>
+            <div>Serviço</div>
+          </div>
           {
             flightServices.map((service: ServiceInterface, index) => {
-              return <span key={index}><ServiceItem service={service}/></span>
+              return <div key={index} className="mt-6"><ServiceItem service={service}/></div>
             })
           }
         </div>
